@@ -10,6 +10,7 @@ class App extends Component {
         </header>
         <p className="App-intro">
           Cucumber with Brine
+          <a href="https://github.com/tolicodes/picklejs">GitHub Source</a>
         </p>
       </div>
     );
