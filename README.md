@@ -113,41 +113,50 @@ Ex:
 * I should see 3 "Buttons" in "Modal" containing "Click Me"
 * I should 3 "Buttons" in "Modal"
 
-### I should see "{string}" [on the] <Element/>
+#### I should see "{string}" [on the] \<Element\>
 
 Ex:
 * I should see "Press Me" on the "Button" inside the "Modal"
-Then(
-    r(`I should see ${string}${elInEl}`),
-    (text, el, parent) => shouldExist(el, { parent, text })
-);
 
-// putting after because the one before exclusively works 
-// for text and doesn't have a verb before it
-// ex: I should see "Press Me Button" on the "Button" inside the "Modal"
-Then(
-    r(`I should see${elInEl}`),
-    (el, parent) => shouldExist(el, { parent })
-);
+#### I should see \<Element\> [on the] \<Element\>
+There is text present inside the element
 
-// ex:  I should not see the "Buttons" in the "Modal"
-//      I should not see "Buttons" on the "Page"
-//      I should not see the "Button"
-Then(
-    r(`I should not see${elInEl}`),
-    (el, parent) => {
-        getNormalized([parent, el], { singular: true })
-            .should('have.length', 0);
-    }
-);
+Ex:
+* I should see "Press Me" on the "Button" inside the "Modal"
 
-// ex: "Username" should be "toli"
-Then('{string} should be {string}', shouldExist);
+#### I should not see \<Element\> [on the] \<Element\>
+An element should not be present
 
-// ex: "Username's" value should be "toli"
-Then('{string} value should be {string}', shouldExist);
+Ex:
+* I should not see the "Buttons" in the "Modal"
+* I should not see "Buttons" on the "Page"
+* I should not see the "Button"
+
+#### \<Element\> should be "{string}"
+There should be text present on the element
+
+Ex:
+* "Username" should be "toli"
+
+#### \<Element\> value should be "{string}"
+There should be text present on the element
+
+Ex:
+* "Username's" value should be "toli"
+
+### Router
+Write about it....
+
+
+### API
+Write about it...
+
+### Functions
+Wriate about it...
 
 ## Example App
+WORK IN PROGRESS
+
 Run
 ```
 yarn cypress:open
@@ -158,4 +167,11 @@ Website:
 Run:
 ```
 yarn start
+```
+
+## Developing
+When making a change just run the following to build.
+
+```
+yarn buildLib
 ```
