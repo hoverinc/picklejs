@@ -1,7 +1,7 @@
 import selectors from './selectors.json';
 import screens from './screens.json';
 
-import generateAutoPhrases from '../../helpers/generateAutoPhrases';
+import generateAutoPhrases from 'picklejs/generateAutoPhrases';
 
 import {
     setScreens,
