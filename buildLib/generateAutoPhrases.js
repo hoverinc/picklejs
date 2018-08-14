@@ -107,6 +107,7 @@
         Then('{string} value should be {string}', _functions.shouldExist);
 
         // ex: I should see a "red" background on the "Button"
+        console.log(r(`I should see a {string} background ${elInEl}`));
         Then(r(`I should see a {string} background ${elInEl}`), (background, el, parent) => {
             (0, _functions.getNormalized)([parent, el]).should('have.css', 'background', background);
         });
