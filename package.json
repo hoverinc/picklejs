@@ -1,9 +1,10 @@
 {
   "name": "picklejs",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "private": true,
   "main": "buildLib",
   "dependencies": {
+    "hex-rgb": "^3.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
