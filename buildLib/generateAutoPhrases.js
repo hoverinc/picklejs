@@ -31,7 +31,7 @@
     const hex2rgbCSS = exports.hex2rgbCSS = hex => {
         const { red, green, blue, alpha } = (0, _hexRgb2.default)(hex);
 
-        return `rbg(${red}, ${green}, ${blue}${alpha ? ` ${alpha}` : ''}`;
+        return `rbg(${red}, ${green}, ${blue}${alpha < 255 ? ` ${alpha}` : ''}`;
     };
 
     // regex builder (via string)
