@@ -20,7 +20,7 @@
     const verbs = exports.verbs = ['a', 'on', 'on the', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the', 'on the'];
 
     // regex builder (via string)
-    const r = exports.r = str => new RegExp(str, 'i');
+    const r = exports.r = str => new RegExp(`^${str}$`, 'i');
 
     const or = exports.or = (arr, { capture, noLeadingSpace, required } = {}) => `(${capture ? '' : '?:'}${arr.map(word => (noLeadingSpace ? '' : ' ') + word).join('|')})${required ? '' : '?'}`;
 
