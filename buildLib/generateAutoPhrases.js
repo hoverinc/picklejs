@@ -42,12 +42,13 @@
     const string = exports.string = '"([^"]+)"';
     const int = exports.int = '(\\d+)';
 
-    const elInEl = exports.elInEl = `${or(verbs)} ${string}(?:${or(verbs)} ${string})?`;
+    const elInEl = exports.elInEl = `${or(verbs)} ${string}(?:${or(verbs)} ${string})?(?: containing ${string})?`;
 
     exports.default = () => {
         // ex:  I click on the "Button"
         //      I click "Save"
         //      I click on "Save" inside the "Modal"
+        //      I click on "Button" inside the "Modal" containing "Save"
         When(r(`I click${elInEl}`), _functions.clickElement);
 
         // ex:  I type "toli" into the "Username Input"
