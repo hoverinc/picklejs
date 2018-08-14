@@ -1,23 +1,38 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', './variables', './functions'], factory);
+        define(['exports', 'hex-rgb', './variables', './functions'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('./variables'), require('./functions'));
+        factory(exports, require('hex-rgb'), require('./variables'), require('./functions'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.variables, global.functions);
+        factory(mod.exports, global.hexRgb, global.variables, global.functions);
         global.generateAutoPhrases = mod.exports;
     }
-})(this, function (exports, _variables, _functions) {
+})(this, function (exports, _hexRgb, _variables, _functions) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.elInEl = exports.int = exports.string = exports.or = exports.r = exports.verbs = undefined;
+    exports.elInEl = exports.int = exports.string = exports.or = exports.r = exports.hex2rgbCSS = exports.verbs = undefined;
+
+    var _hexRgb2 = _interopRequireDefault(_hexRgb);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
     const verbs = exports.verbs = ['a', 'on', 'on the', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the', 'on the'];
+
+    const hex2rgbCSS = exports.hex2rgbCSS = hex => {
+        const { red, green, blue, alpha } = (0, _hexRgb2.default)(hex);
+
+        return `rbg(${red}, ${green}, ${blue}${alpha ? ` ${alpha}` : ''}`;
+    };
 
     // regex builder (via string)
     const r = exports.r = str => new RegExp(`^${str}$`, 'i');
@@ -108,7 +123,7 @@
 
         // ex: I should see a "red" background on the "Button"
         Then(r(`I should see a ${string} background${elInEl}`), (background, el, parent) => {
-            (0, _functions.getNormalized)([parent, el]).should('have.css', 'background-color', background);
+            (0, _functions.getNormalized)([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background));
         });
     };
 });
