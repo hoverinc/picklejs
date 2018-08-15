@@ -77,7 +77,7 @@
         });
 
         // ex: I scroll to the bottom the "Modal"
-        When(r(`I scroll to the (top|bottom) of the ${string}`), (direction, el) => {
+        When(r(`I scroll to the (top|bottom) of the page`), direction => {
             let windowObj;
             cy.window().then(win => {
                 windowObj = win;
