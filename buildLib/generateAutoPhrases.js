@@ -76,8 +76,8 @@
         When('I wait for results to load', _functions.waitForResults);
 
         // ex: I should be redirected to the "Login Screen"
-        Then('I should be redirected to the {string}', url => {
-            cy.url().should('contain', url);
+        Then('I should be redirected to the {string}', screen => {
+            cy.url().should('contain', _variables.SCREENS[screen]);
         });
 
         // I should see 3 "Buttons" in "Modal"
