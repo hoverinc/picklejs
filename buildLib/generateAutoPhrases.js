@@ -45,7 +45,7 @@
             if (randomVariable) {
                 const randomNumber = Math.round(Math.random() * 10000);
                 text = text.replace(randomVariableRegex, randomNumber);
-                (0, _variables.setState)(randomVariable[0], randomNumber);
+                (0, _variables.setState)(randomVariable[1], randomNumber);
             }
 
             const stateVariableRegex = /<var:(\w)+>/;
@@ -53,7 +53,7 @@
 
             if (stateVariable) {
                 console.log(_variables.STATE);
-                text = text.replace(stateVariableRegex, _variables.STATE[stateVariable[0]]);
+                text = text.replace(stateVariableRegex, _variables.STATE[stateVariable[1]]);
             }
 
             (0, _functions.getNormalized)([parent, input]).type(text);
