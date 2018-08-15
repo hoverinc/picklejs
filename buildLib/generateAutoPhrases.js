@@ -39,7 +39,7 @@
         //      I type "toli" into "Username"
         //      I type "toli" into the "Username Input" on the "SignIn form"
         When(r(`I type ${string}${elInEl}`), (text, input, parent) => {
-            text = text.replace('<rand>', Math.round(Math.random() * 5));
+            text = text.replace('<rand>', Math.round(Math.random() * 10000));
             (0, _functions.getNormalized)([parent, input]).type(text);
         });
 
