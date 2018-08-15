@@ -46,8 +46,14 @@
                 const randomNumber = Math.round(Math.random() * 10000);
                 text = text.replace(randomVariableRegex, randomNumber);
                 (0, _variables.setState)(randomVariable[0], randomNumber);
+            }
 
-                console.log(randomVariable, randomVariable, text);
+            const stateVariableRegex = /<var:(\w)+>/;
+            const stateVariable = text.match(stateVariableRegex);
+
+            if (stateVariable) {
+                console.log(_variables.STATE);
+                text = text.replace(stateVariableRegex, _variables.STATE[stateVariable[0]]);
             }
 
             (0, _functions.getNormalized)([parent, input]).type(text);
