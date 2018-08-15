@@ -77,14 +77,15 @@
         });
 
         // ex: I scroll to the bottom the "Modal"
-        When('I scroll to the bottom of the {string}', el => {
+        When(r(`I scroll to the (top|bottom) of the ${string}`), (direction, el) => {
             let windowObj;
             cy.window().then(win => {
                 windowObj = win;
                 return cy.get('body');
             }).then(body => {
                 const { scrollHeight } = body[0];
-                windowObj.scrollTo(0, scrollHeight + 100);
+                const px = direction === 'top' ? 0 : scrollHeight + 100;
+                windowObj.scrollTo(0, px);
             });
         });
 
