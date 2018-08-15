@@ -39,12 +39,13 @@
         //      I type "toli" into "Username"
         //      I type "toli" into the "Username Input" on the "SignIn form"
         When(r(`I type ${string}${elInEl}`), (text, input, parent) => {
-            const randomVariable = text.match(/<rand:(\w)>/)[0];
+            const randomVariableRegex = /<rand:(\w)+>/;
+            const randomVariable = text.match(randomVariableRegex);
 
             if (randomVariable) {
                 const randomNumber = Math.round(Math.random() * 10000);
-                text = text.replace(/<rand:(\w)>/, randomNumber);
-                (0, _variables.setState)(randomVariable, randomNumber);
+                text = text.replace(randomVariableRegex, randomNumber);
+                (0, _variables.setState)(randomVariable[0], randomNumber);
 
                 console.log(randomVariable, randomVariable, text);
             }
