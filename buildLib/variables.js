@@ -22,12 +22,19 @@
     // will hold screen urls throughout the test
     let SCREENS = exports.SCREENS = {};
 
+    // will hold variables used throughout the test suite 
+    let STATE = exports.STATE = {};
+
     const setElementSelector = exports.setElementSelector = selectors => {
         exports.ELEMENT_SELECTORS = ELEMENT_SELECTORS = selectors;
     };
 
     const setScreens = exports.setScreens = screens => {
         exports.SCREENS = SCREENS = screens;
+    };
+
+    const setState = exports.setState = (variable, value) => {
+        STATE[variable] = value;
     };
 });
 //# sourceMappingURL=variables.js.map
