@@ -77,7 +77,7 @@
 
         // ex: I should be redirected to the "Login Screen"
         Then('I should be redirected to the {string}', url => {
-            cy.url().shouldBe(url);
+            cy.url().should('contain', url);
         });
 
         // I should see 3 "Buttons" in "Modal"
