@@ -85,6 +85,8 @@
             }).then(body => {
                 const { scrollHeight } = body[0];
                 const px = direction === 'top' ? 0 : scrollHeight + 100;
+
+                console.log(px);
                 windowObj.scrollTo(0, px);
             });
         });
