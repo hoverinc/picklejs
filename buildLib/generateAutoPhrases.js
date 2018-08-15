@@ -17,7 +17,7 @@
         value: true
     });
     exports.elInEl = exports.int = exports.string = exports.or = exports.r = exports.verbs = undefined;
-    const verbs = exports.verbs = ['a', 'on', 'on the', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the', 'on the'];
+    const verbs = exports.verbs = ['a', 'on', 'on the', 'an a', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the'];
 
     // regex builder (via string)
     const r = exports.r = str => new RegExp(str, 'i');
@@ -87,6 +87,8 @@
                 windowObj.scrollTo(0, scrollHeight + 100);
             });
         });
+
+        When('I press {key}', () => {});
 
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
