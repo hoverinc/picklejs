@@ -52,7 +52,6 @@
             const stateVariable = text.match(stateVariableRegex);
 
             if (stateVariable) {
-                console.log(_variables.STATE);
                 text = text.replace(stateVariableRegex, _variables.STATE[stateVariable[1]]);
             }
 
