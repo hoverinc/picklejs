@@ -126,6 +126,11 @@
         Then(r(`I should see a ${string} background${elInEl}`), (background, el, parent) => {
             (0, _functions.getNormalized)([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background));
         });
+
+        // ex: I should see a "red" border on the "Button"
+        Then(r(`I should see a ${string} border${elInEl}`), (background, el, parent) => {
+            (0, _functions.getNormalized)([parent, el]).should('have.css', 'border-color', hex2rgbCSS(background));
+        });
     };
 });
 //# sourceMappingURL=generateAutoPhrases.js.map
