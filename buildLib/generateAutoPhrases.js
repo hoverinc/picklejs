@@ -102,8 +102,7 @@
                 const { scrollHeight } = body[0];
                 const px = direction === 'top' ? 0 : scrollHeight + 100;
 
-                // electron is stupid: https://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
-                windowObj.scrollTo(0, 0);
+                windowObj.scrollTo(0, px);
             });
         });
 
