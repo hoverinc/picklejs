@@ -26,7 +26,17 @@
 
             // implement our fixtures
             Object.entries(routes).forEach(([path, endpoint]) => {
-                cy.route(path, `fixture:${endpoint}.json`).as(endpoint);
+                let method = 'GET';
+                const methods = ['POST', 'GET', 'DELETE', 'PUT'];
+
+                methods.forEach(m => {
+                    if (path.contains(`${m} `)) {
+                        path = path.replace(`${m} `, '');
+                        method = m;
+                    }
+                });
+
+                cy.route(method, path, `fixture:${endpoint}.json`).as(endpoint);
             });
         });
     };
