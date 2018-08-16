@@ -76,10 +76,8 @@
 
         // ex:  When I replace the contents of "Username" with "toli"
         //      When I replace the contents of "Username" inside of the "Login Modal" with "toli"
-        When(r(`I replace the contents${elInEl} with ${string}`), (input, parent, text) => {
-            // overload
-            if (!text) text = parent;
-
+        When(r(`I replace the contents${elInEl} with ${string}`), (input, parent, text, o) => {
+            console.log(input, parent, text, o);
             (0, _functions.getNormalized)([parent, input]).clear().type(text);
         });
 
