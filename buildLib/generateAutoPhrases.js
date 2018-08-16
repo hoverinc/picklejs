@@ -115,7 +115,7 @@
         });
 
         // ex: I should be redirected to the "Login Screen"
-        Then('I should be redirected to the {string}', screen => {
+        Then(r(`I should be redirected to (?:the )*${string}`), screen => {
             cy.url().should('contain', _variables.SCREENS[screen]);
         });
 
