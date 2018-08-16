@@ -1,38 +1,54 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', './variables', './functions'], factory);
+        define(['exports', 'hex-rgb', './variables', './functions'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('./variables'), require('./functions'));
+        factory(exports, require('hex-rgb'), require('./variables'), require('./functions'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.variables, global.functions);
+        factory(mod.exports, global.hexRgb, global.variables, global.functions);
         global.generateAutoPhrases = mod.exports;
     }
-})(this, function (exports, _variables, _functions) {
+})(this, function (exports, _hexRgb, _variables, _functions) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.elInEl = exports.int = exports.string = exports.or = exports.r = exports.verbs = undefined;
+    exports.elInEl = exports.int = exports.string = exports.or = exports.r = exports.hex2rgbCSS = exports.verbs = undefined;
+
+    var _hexRgb2 = _interopRequireDefault(_hexRgb);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
     const verbs = exports.verbs = ['a', 'on', 'on the', 'an a', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the'];
 
+    const hex2rgbCSS = exports.hex2rgbCSS = hex => {
+        const { red, green, blue, alpha } = (0, _hexRgb2.default)(hex);
+
+        return `rgb(${red}, ${green}, ${blue}${alpha < 255 ? ` ${alpha}` : ''})`;
+    };
+
     // regex builder (via string)
-    const r = exports.r = str => new RegExp(str, 'i');
+    const r = exports.r = str => new RegExp(`^${str}$`, 'i');
 
     const or = exports.or = (arr, { capture, noLeadingSpace, required } = {}) => `(${capture ? '' : '?:'}${arr.map(word => (noLeadingSpace ? '' : ' ') + word).join('|')})${required ? '' : '?'}`;
 
     const string = exports.string = '"([^"]+)"';
     const int = exports.int = '(\\d+)';
 
-    const elInEl = exports.elInEl = `${or(verbs)} ${string}(?:${or(verbs)} ${string})?`;
+    const elInEl = exports.elInEl = `${or(verbs)} ${string}(?:${or(verbs)} ${string})?(?: containing ${string})?`;
 
     exports.default = () => {
         // ex:  I click on the "Button"
         //      I click "Save"
         //      I click on "Save" inside the "Modal"
+        //      I click on "Button" inside the "Modal" containing "Save"
         When(r(`I click${elInEl}`), _functions.clickElement);
 
         // ex:  I type "toli" into the "Username Input"
@@ -77,14 +93,17 @@
         });
 
         // ex: I scroll to the bottom the "Modal"
-        When('I scroll to the bottom of the {string}', el => {
+        When(r(`I scroll to the (top|bottom) of the page`), direction => {
             let windowObj;
             cy.window().then(win => {
                 windowObj = win;
                 return cy.get('body');
             }).then(body => {
                 const { scrollHeight } = body[0];
-                windowObj.scrollTo(0, scrollHeight + 100);
+                const px = direction === 'top' ? 0 : scrollHeight + 100;
+
+                // electron is stupid: https://stackoverflow.com/questions/15691569/javascript-issue-with-scrollto-in-chrome
+                windowObj.scrollTop = 0;
             });
         });
 
@@ -129,6 +148,16 @@
 
         // ex: "Username's" value should be "toli"
         Then('{string} value should be {string}', _functions.shouldExist);
+
+        // ex: I should see a "red" background on the "Button"
+        Then(r(`I should see a ${string} background${elInEl}`), (background, el, parent) => {
+            (0, _functions.getNormalized)([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background));
+        });
+
+        // ex: I should see a "red" border on the "Button"
+        Then(r(`I should see a ${string} border${elInEl}`), (background, el, parent) => {
+            (0, _functions.getNormalized)([parent, el]).should('have.css', 'border-color', hex2rgbCSS(background));
+        });
     };
 });
 //# sourceMappingURL=generateAutoPhrases.js.map

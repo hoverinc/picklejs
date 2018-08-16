@@ -160,10 +160,7 @@
 
     const itemShouldBeVisible = exports.itemShouldBeVisible = el => getNormalized(el).first().should('exist');
 
-    const clickElement = exports.clickElement = (el, parent) => {
-        const els = [parent, el].filter(e => e);
-        return getNormalized(els).first().click();
-    };
+    const clickElement = exports.clickElement = (el, parent, text) => getNormalized([parent, el], { text }).first().click();
 
     const shouldExist = exports.shouldExist = (element, { parent, text }) => {
         const els = [parent, element].filter(e => e);
