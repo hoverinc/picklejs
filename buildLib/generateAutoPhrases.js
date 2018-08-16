@@ -91,6 +91,14 @@
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
 
+        When(r(`I drag ${elInEl} above ${elInEl}`), (el1, el2) => {
+            (0, _functions.getNormalized)(el1).trigger('mouseover');
+
+            (0, _functions.getNormalized)(el2).then($el => {
+                console.log($el[0].getBoundingRect());
+            });
+        });
+
         // ex: I should be redirected to the "Login Screen"
         Then('I should be redirected to the {string}', screen => {
             cy.url().should('contain', _variables.SCREENS[screen]);
