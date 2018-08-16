@@ -88,8 +88,6 @@
             });
         });
 
-        When('I press {key}', () => {});
-
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
 
