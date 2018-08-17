@@ -30,7 +30,7 @@
                 const methods = ['POST', 'GET', 'DELETE', 'PUT'];
 
                 methods.forEach(m => {
-                    if (path.contains(`${m} `)) {
+                    if (path.includes(`${m} `)) {
                         path = path.replace(`${m} `, '');
                         method = m;
                     }
