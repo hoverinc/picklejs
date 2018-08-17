@@ -1,6 +1,6 @@
 {
   "name": "picklejs",
-  "version": "0.47.0",
+  "version": "0.48.0",
   "private": true,
   "main": "buildLib",
   "dependencies": {
@@ -17,7 +17,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "watch": "babel --watch --copy-files --plugins add-module-exports --plugins transform-es2015-modules-umd lib/  --out-dir ./buildLib --source-maps",
-    "buildLib": "babel --copy-files --plugins add-module-exports --plugins transform-es2015-modules-umd lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor && git add -A .",
+    "buildLib": "babel --copy-files --plugins add-module-exports --plugins transform-es2015-modules-umd lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
     "prepush": "yarn build && yarn buildLib"
   },
   "devDependencies": {
