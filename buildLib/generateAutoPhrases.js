@@ -1,16 +1,16 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', 'hex-rgb', './variables', './functions'], factory);
+        define(['exports', 'hex-rgb', 'cypress-image-snapshot/command', './variables', './functions'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('hex-rgb'), require('./variables'), require('./functions'));
+        factory(exports, require('hex-rgb'), require('cypress-image-snapshot/command'), require('./variables'), require('./functions'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.hexRgb, global.variables, global.functions);
+        factory(mod.exports, global.hexRgb, global.command, global.variables, global.functions);
         global.generateAutoPhrases = mod.exports;
     }
-})(this, function (exports, _hexRgb, _variables, _functions) {
+})(this, function (exports, _hexRgb, _command, _variables, _functions) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -43,6 +43,8 @@
     const int = exports.int = '(\\d+)';
 
     const elInEl = exports.elInEl = `${or(verbs)} ${string}(?:${or(verbs)} ${string})?(?: containing ${string})?`;
+
+    (0, _command.addMatchImageSnapshotCommand)();
 
     exports.default = () => {
         // ex:  I click on the "Button"
@@ -106,12 +108,34 @@
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
 
-        When(r(`I drag ${elInEl} above ${elInEl}`), (el1, el2) => {
-            (0, _functions.getNormalized)(el1).trigger('mouseover');
+        When(r(`I drag${elInEl} above${elInEl}`), (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
+            const $el1 = (0, _functions.getNormalized)([el1Parent, el1], { text: el1Contains });
+            $el1.trigger('mousedown', { which: 1, force: true });
 
-            (0, _functions.getNormalized)(el2).then($el => {
-                console.log($el[0].getBoundingRect());
+            let el2X = 0;
+            let el2Y = 0;
+
+            (0, _functions.getNormalized)([el2Parent, el2], { text: el2Contains }).then($el => {
+                const { x, y } = $el[0].getBoundingClientRect();
+                el2X = x;
+                el2Y = y;
+
+                return (0, _functions.getNormalized)('Ranking Form');
+            }).then($el => {
+                const { x: containerX, y: containerY } = $el[0].getBoundingClientRect();
+
+                const newPosOpts = {
+                    x: 400,
+                    y: 100,
+                    force: true
+                };
+
+                $el.trigger('mousemove', newPosOpts).trigger('mouseup', newPosOpts);
             });
+        });
+
+        When('I take a snapshot', () => {
+            cy.matchImageSnapshot();
         });
 
         // ex: I should be redirected to the "Login Screen"
