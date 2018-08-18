@@ -136,8 +136,8 @@
 
         When('I take a snapshot', () => {
             cy.matchImageSnapshot(null, {
-                threshold: .5,
-                thesholdType: percent
+                threshold: 500,
+                thesholdType: 'pixels'
             });
         });
 
