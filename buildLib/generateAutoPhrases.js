@@ -134,8 +134,8 @@
             });
         });
 
-        When('I take a snapshot', () => {
-            cy.matchImageSnapshot(undefined, {
+        When('I take a snapshot named {string}', name => {
+            cy.matchImageSnapshot(name, {
                 threshold: 200,
                 thesholdType: 'pixel'
             });
