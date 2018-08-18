@@ -135,7 +135,9 @@
         });
 
         When('I take a snapshot', () => {
-            cy.matchImageSnapshot();
+            cy.matchImageSnapshot({
+                threshold: .05
+            });
         });
 
         // ex: I should be redirected to the "Login Screen"
