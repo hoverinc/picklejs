@@ -135,9 +135,9 @@
         });
 
         When('I take a snapshot', () => {
-            cy.matchImageSnapshot(null, {
-                threshold: 500,
-                thesholdType: 'pixels'
+            cy.matchImageSnapshot(undefined, {
+                threshold: 200,
+                thesholdType: 'pixel'
             });
         });
 
