@@ -135,7 +135,7 @@
         });
 
         When('I take a snapshot', () => {
-            cy.matchImageSnapshot({
+            cy.matchImageSnapshot(null, {
                 threshold: .5
             });
         });
