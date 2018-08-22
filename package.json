@@ -1,10 +1,6 @@
 {
   "name": "picklejs",
-<<<<<<< HEAD
-  "version": "0.63.0",
-=======
-  "version": "0.56.0",
->>>>>>> v0.56.0
+  "version": "0.57.0",
   "private": true,
   "main": "buildLib",
   "dependencies": {
@@ -20,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "watch": "babel --watch --copy-files lib/  --out-dir ./buildLib --source-maps",
+    "watch": "babel --watch lib/  --out-dir ./buildLib --source-maps",
     "buildLib": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
     "prepush": "yarn build && yarn buildLib"
   },
