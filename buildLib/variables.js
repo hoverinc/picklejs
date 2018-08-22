@@ -16,6 +16,21 @@
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+
+    var _extends = Object.assign || function (target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i];
+
+            for (var key in source) {
+                if (Object.prototype.hasOwnProperty.call(source, key)) {
+                    target[key] = source[key];
+                }
+            }
+        }
+
+        return target;
+    };
+
     // will hold element selectors throughout the test
     let ELEMENT_SELECTORS = exports.ELEMENT_SELECTORS = {};
 
@@ -26,11 +41,11 @@
     let STATE = exports.STATE = {};
 
     const setElementSelector = exports.setElementSelector = selectors => {
-        exports.ELEMENT_SELECTORS = ELEMENT_SELECTORS = selectors;
+        exports.ELEMENT_SELECTORS = ELEMENT_SELECTORS = _extends({}, ELEMENT_SELECTORS, selectors);
     };
 
     const setScreens = exports.setScreens = screens => {
-        exports.SCREENS = SCREENS = screens;
+        exports.SCREENS = SCREENS = _extends({}, SCREENS, screens);
     };
 
     const setState = exports.setState = (variable, value) => {
