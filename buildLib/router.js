@@ -24,8 +24,6 @@
             // disable all xhrs
             cy.route('**', {});
 
-            console.log(routes);
-
             // implement our fixtures
             Object.entries(routes).forEach(([path, endpoint]) => {
                 let method = 'GET';
