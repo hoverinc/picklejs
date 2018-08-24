@@ -78,9 +78,7 @@ const siteConfig = {
   ogImage: 'img/pickle.png',
   twitterImage: 'img/pickle.png',
 
-  // You may provide arbitrary config keys to be used as needed by your
-  // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: 'https://github.com/tolicode/picklejs',
 };
 
 module.exports = siteConfig;

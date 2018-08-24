@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
@@ -94,7 +87,7 @@ const Block = props => (
     padding={['bottom', 'top']}
     id={props.id}
     background={props.background}>
-    <GridBlock align={props.textAlign || 'center'} contents={props.children} layout={props.layout} />
+    <GridBlock align="left" contents={props.children} layout={props.layout} />
   </Container>
 );
 
@@ -102,12 +95,30 @@ const Features = () => (
   <Block layout="fourColumn">
     {[
       {
+        imageAlign: 'top',
+        image: imgUrl('no-js.png'),
         content: 'Product Owners or QA can write tests themselves in plain english',
         title: 'No Javascript Knowledge Required',
       },
       {
+        imageAlign: 'top',
+        image: imgUrl('extend.png'),
         content: 'It\'s all simple regular expressions. Extend it however you want',
         title: 'Easily Extendable',
+      },
+      {
+        imageAlign: 'top',
+        image: imgUrl('flexible.png'),
+        textAlign: 'left',
+        content: `
+All of the following are valid:
+
+- When I click on the "Button"
+- When I click the "Button"
+- When I click the "Button" in the "Header"
+- When I click a "Button" inside the "Modal"
+        `,
+        title: 'Flexible Sentence Structure',
       },
     ]}
   </Block>
@@ -118,18 +129,32 @@ const LearnHow = () => (
     {[
       {
         content: `
-Here are some examples:
+Here are some examples. All human readable. You just need to define you selectors and you're good to go!
 
     Scenario: Test a site out
         When I open the "Home Page"
         And I click on the "Get Started Button" inside of the "Header"
-        I should be redirected to the "Getting Started Page"
+        Then I should be redirected to the "Getting Started Page"
     
-    Scenario: 
+    Scenario: Sign up for updates
+        When I open the "Home Page"
+        And I enter "toli@tolicodes.com" into the "Email Input" in the "Newsletter Form"
+        And I click "Submit" in the "Newletter Form"
+        Then I should see a "Newsletter Signup Confirmation Popup"
 
+    Scenario: I make 2 searches
+        When I open the "Home Page"
+        And I type "pickle" into the "Search Input" in the "Header"
+        Then the "first Result" in "Search Results" should contain "pickle"
 
+        And I repplace the contents of "Search Input" in the "Header" with "scroll"
+        Then  the "first Result" in "Search Results" should contain "scroll"
+    
+    Scenario: I scroll to the bottom of the page
+        When I scroll to the bottom of the page
+        Then the "Who's Using This Section" should be visible
         `,
-        title: 'Learn How',
+        title: 'See How Easy It Is...',
       },
     ]}
   </Block>

@@ -44,11 +44,46 @@ Your Cypress installation should already scaffold most of this. The files you'll
 ```
 
 ### /plugins/index.js
-Replace the contents with
+Replace the contents with:
 ```
 const pickle = require('picklejs/index');
 
 module.exports = pickle; 
+```
+
+### /support/step_definitions/screens.json
+This goes at the top level of your test files. You will put the URLs of all your screens here. It should look like this:
+
+```
+{
+    "Home Page": "https://picklejs.com/",
+    "API Docs": "https://picklejs.com/api",
+    "Getting Started": "https://picklejs.com/getting-started"
+}
+```
+
+### /support/step_definitions/selectors.json
+This is included for every feature you write. It will include all of the elements and their parents. 
+
+*Remember to include a key called `default` which is the selector for the parent.*
+
+All selectors are matched using `[class*="your-selector"]`. So if you are using Styled Components, your selectors might look like `.styled__Header-sdj94s9d` but you only need to write `.styled__Header` or even `.Header`. 
+
+You can use any selector supported by Cypress, which supports most CSS3 selectors including my favorite, `:contains()`.
+
+```
+{
+    "Header": {
+        "default": ".Header",
+        "Search Input": ".SearchInput"
+        "Getting Started Link": "a[href="getting-started"]"
+    },
+
+    "Sidebar": {
+        "default": ".Sidebar",
+        "API Link": "a:contains('API')"
+    }
+}
 ```
 
 ### /support/step_definitions/your-component/feature.js
