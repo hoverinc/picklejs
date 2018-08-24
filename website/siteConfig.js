@@ -19,8 +19,8 @@ const siteConfig = {
   organizationName: 'hover',
 
   algolia: {
-    apiKey: '7e3ddac9ad950ce5cf277ee4f282d812',
-    indexName: 'picklejs-website',
+    apiKey: 'c8f7088de4cd4b2d23d4ca39ad88fb6e',
+    indexName: 'picklejs',
     algoliaOptions: {} // Optional, if provided by Algolia
   },
  
@@ -44,20 +44,6 @@ const siteConfig = {
     secondaryColor: '#205C3B',
   },
 
-  /* Custom fonts for website */
-  /*
-  fonts: {
-    myFont: [
-      "Times New Roman",
-      "Serif"
-    ],
-    myOtherFont: [
-      "-apple-system",
-      "system-ui"
-    ]
-  },
-  */
-
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
   copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
 
@@ -78,7 +64,7 @@ const siteConfig = {
   ogImage: 'img/pickle.png',
   twitterImage: 'img/pickle.png',
 
-  repoUrl: 'https://github.com/tolicode/picklejs',
+  repoUrl: 'https://github.com/tolicodes/picklejs',
 };
 
 module.exports = siteConfig;
