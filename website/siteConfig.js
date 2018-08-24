@@ -17,6 +17,12 @@ const siteConfig = {
   // Used for publishing and more
   projectName: 'picklejs',
   organizationName: 'hover',
+
+  algolia: {
+    apiKey: '7e3ddac9ad950ce5cf277ee4f282d812',
+    indexName: 'picklejs-website',
+    algoliaOptions: {} // Optional, if provided by Algolia
+  },
  
   headerLinks: [
     {doc: 'getting-started', label: 'Getting Started'},
@@ -28,8 +34,8 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
+  headerIcon: 'img/pickle.png',
+  footerIcon: 'img/pickle.png',
   favicon: 'img/favicon.png',
 
   /* Colors for website */
@@ -69,8 +75,8 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  ogImage: 'img/pickle.png',
+  twitterImage: 'img/pickle.png',
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
