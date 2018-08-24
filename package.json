@@ -6,19 +6,14 @@
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
     "cypress-image-snapshot": "^2.0.1",
-    "hex-rgb": "^3.0.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+    "hex-rgb": "^3.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "cd website && yarn start",
+    "build": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
     "watch": "babel --watch lib/  --out-dir ./buildLib --source-maps",
-    "buildLib": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
-    "prepush": "yarn build && yarn buildLib"
+    "buildSite": "cd website && yarn build",
+    "prepush": "yarn build && yarn buildSite"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,8 +1,7 @@
+const Iframe = require('react-iframe').default;
 const React = require('react');
-
 const CompLibrary = require('../../core/CompLibrary.js');
 
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
@@ -70,12 +69,19 @@ class HomeSplash extends React.Component {
     const language = this.props.language || '';
     return (
       <SplashContainer>
-        <Logo img_src={imgUrl('pickle.png')} />
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
             <Button href="/docs/getting-started">Get Started</Button>
+            <Button href="https://github.com/tolicodes/picklejs">Github</Button>
           </PromoSection>
+
+          <Iframe
+            url="//slides.com/anatoliyzaslavskiy/deck/embed"
+            height="500px"
+            position="relative"
+            allowFullScreen
+            />
         </div>
       </SplashContainer>
     );

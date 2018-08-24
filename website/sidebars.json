@@ -2,7 +2,13 @@
   "docs": {
     "Getting Started": [
       "getting-started",
-      "api"
+      "api",
+      "router",
+      "example-app",
+      "recommended-cypress-setup",
+      "extending",
+      "developing",
+      "this-website"
     ]
   }
 }
