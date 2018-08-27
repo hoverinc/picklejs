@@ -13,7 +13,8 @@
     "docusaurus": "^1.3.3"
   },
   "dependencies": {
-    "@tolicodes/picklejs": "^0.74.0",
+    "picklejs": "^0.76.0",
+    "react-google-tag-manager": "^2.2.1",
     "react-iframe": "^1.2.0",
     "words-to-numbers": "^1.5.1"
   }
