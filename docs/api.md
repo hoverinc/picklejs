@@ -103,6 +103,11 @@ Waits for an AJAX request to finish.
 
 This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
 
+### Taking a Snapshot
+`I take a snapshot name "{string}"`
+
+Takes a snapshot of the current screen and compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
+
 ## Thens
 ### Redirect 
 `I should be redirected to the <Screen>`
@@ -159,3 +164,11 @@ There should be text present on the element
 
 Ex:
 * `"Username" should be "toli"`
+
+## Other Concepts
+### Colors
+Any function referring to a color should be in RGB format (`#ffffff`). If the orginal color is in RGB format it will be converted.
+
+In the future we will support multiple color formats and even "fuzzy color matching"
+
+###

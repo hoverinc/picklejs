@@ -26,7 +26,7 @@
         };
     }
 
-    const verbs = exports.verbs = ['a', 'on', 'on the', 'an a', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the'];
+    const verbs = exports.verbs = ['a', 'on', 'on the', 'the', 'into', 'into the', 'of', 'of the', 'in', 'in the', 'inside', 'inside of', 'inside the', 'inside of the'];
 
     const hex2rgbCSS = exports.hex2rgbCSS = hex => {
         const { red, green, blue, alpha } = (0, _hexRgb2.default)(hex);
@@ -47,6 +47,20 @@
     (0, _command.addMatchImageSnapshotCommand)();
 
     exports.default = () => {
+        // ex: I scroll to the bottom the "Modal"
+        When(r(`I scroll to the (top|bottom) of the page`), direction => {
+            let windowObj;
+            cy.window().then(win => {
+                windowObj = win;
+                return cy.get('body');
+            }).then(body => {
+                const { scrollHeight } = body[0];
+                const px = direction === 'top' ? 0 : scrollHeight + 100;
+
+                windowObj.scrollTo(0, px);
+            });
+        });
+
         // ex:  I click on the "Button"
         //      I click "Save"
         //      I click on "Save" inside the "Modal"
@@ -91,23 +105,10 @@
             cy.visit(url);
         });
 
-        // ex: I scroll to the bottom the "Modal"
-        When(r(`I scroll to the (top|bottom) of the page`), direction => {
-            let windowObj;
-            cy.window().then(win => {
-                windowObj = win;
-                return cy.get('body');
-            }).then(body => {
-                const { scrollHeight } = body[0];
-                const px = direction === 'top' ? 0 : scrollHeight + 100;
-
-                windowObj.scrollTo(0, px);
-            });
-        });
-
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
 
+        // This is experimental and not part of the official API
         When(r(`I drag${elInEl} above${elInEl}`), (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
             const $el1 = (0, _functions.getNormalized)([el1Parent, el1], { text: el1Contains });
             $el1.trigger('mousedown', { which: 1, force: true });
