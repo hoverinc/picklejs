@@ -1,7 +1,6 @@
 {
-  "name": "picklejs",
-  "version": "0.72.0",
-  "private": true,
+  "name": "@tolicodes/picklejs",
+  "version": "0.73.0",
   "main": "buildLib",
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
@@ -13,10 +12,14 @@
     "build": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
     "watch": "babel --watch lib/  --out-dir ./buildLib --source-maps",
     "buildSite": "cd website && yarn build",
-    "prepush": "yarn build && yarn buildSite"
+    "prepush": "yarn build && yarn buildSite",
+    "cypress:open": "cd website && cypress open",
+    "cypress:run": "cd website && yarn run cypress run --record --key <YOUR_KEY>",
+    "cypress:ci": "cd website && yarn run cypress:run --parallel"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-watch": "^2.0.7"
   }
