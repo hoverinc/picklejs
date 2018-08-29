@@ -1,3 +1,5 @@
 {
-    "Home Screen": "/"
+    "Home Screen": "/",
+    "Recommended Cypress Setup": "docs/recommended-cypress-setup",
+    "Getting Started": "docs/getting-started"
 }

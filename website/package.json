@@ -9,10 +9,12 @@
     "rename-version": "docusaurus-rename-version"
   },
   "devDependencies": {
+    "babelify": "^8.0.0",
     "cypress": "^3.1.0",
     "docusaurus": "^1.3.3"
   },
   "dependencies": {
+    "npm": "^6.4.0",
     "picklejs": "^0.76.0",
     "react-google-tag-manager": "^2.2.1",
     "react-iframe": "^1.2.0",

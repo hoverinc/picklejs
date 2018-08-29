@@ -1,3 +1,15 @@
 {
-    "Some Button": "Some Selector"
+    "Header": {
+        "default": "header",
+        "Search Input": ".navSearchWrapper input",
+        "Search Result": ".aa-dropdown-menu .algolia-docsearch-suggestion--content",
+        "Getting Started": "a:contains('Getting Started')"
+    },
+    "Buttons Row": {
+        "default": ".promoRow",
+        "Get Started": ".button:contains('Get Started')"
+    },
+    "Presentation": {
+        "default": ".inner iframe"
+    }
 }

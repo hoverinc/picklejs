@@ -108,6 +108,11 @@
         // @TODO: Figure out while default way isn't working
         When('I wait for results to load', _functions.waitForResults);
 
+        // use only in cases where Cypress functions can't be used
+        When('I wait {int} seconds', seconds => {
+            cy.wait(seconds * 1000);
+        });
+
         // This is experimental and not part of the official API
         When(r(`I drag${elInEl} above${elInEl}`), (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
             const $el1 = (0, _functions.getNormalized)([el1Parent, el1], { text: el1Contains });
@@ -137,8 +142,15 @@
 
         When('I take a snapshot named {string}', name => {
             cy.matchImageSnapshot(name, {
-                threshold: 200,
+                threshold: 1000,
                 thesholdType: 'pixel'
+            });
+        });
+
+        When(r(`I take a snapshot of${elInEl}`), (el, parent) => {
+            (0, _functions.getNormalized)([parent, el]).matchImageSnapshot(el, {
+                threshold: 1000,
+                thresholdType: 'pixels'
             });
         });
 

@@ -1,22 +1,24 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', './variables', 'pluralize'], factory);
+        define(['exports', './variables', 'words-to-numbers', 'pluralize'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('./variables'), require('pluralize'));
+        factory(exports, require('./variables'), require('words-to-numbers'), require('pluralize'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.variables, global.pluralize);
+        factory(mod.exports, global.variables, global.wordsToNumbers, global.pluralize);
         global.functions = mod.exports;
     }
-})(this, function (exports, _variables, _pluralize) {
+})(this, function (exports, _variables, _wordsToNumbers, _pluralize) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
     exports.waitForResults = exports.shouldExist = exports.clickElement = exports.itemShouldBeVisible = exports.getSelector = exports.getNormalized = exports.parseNumberEls = exports.selectElement = exports.buildClassSelector = undefined;
+
+    var _wordsToNumbers2 = _interopRequireDefault(_wordsToNumbers);
 
     var _pluralize2 = _interopRequireDefault(_pluralize);
 
@@ -44,31 +46,26 @@
 
     // ex: Third Button => [ Button, 3 ]
     const parseNumberEls = exports.parseNumberEls = el => {
-        const ordinals = {
-            first: 1,
-            second: 2,
-            third: 3,
-            fourth: 4,
-            fifth: 5,
-            sixth: 6,
-            seventh: 7,
-            eighth: 8,
-            ninth: 9,
-            tenth: 10,
-            last: 'last'
-        };
+        if (el.includes('last')) {
+            return {
+                ordinal: 'last',
+                el: el.replace('last ', '')
+            };
+        } else {
+            const parsed = (0, _wordsToNumbers2.default)(el);
+            const numbers = parsed.match(/\d+/);
 
-        return Object.entries(ordinals).reduce((out, [word, wordValue]) => {
-            const { ordinal, el } = out;
-
-            // we already found 
-            if (ordinal) return out;
-
-            return el.includes(word) ? {
-                ordinal: wordValue,
-                el: el.replace(word + ' ', '')
-            } : out;
-        }, { el });
+            if (numbers) {
+                return {
+                    el: parsed.replace(number[0] + ' ', ''),
+                    ordinal: parseInt(number[0])
+                };
+            } else {
+                return {
+                    el: parsed
+                };
+            }
+        }
     };
 
     // pass a single element or chain (parent => child) as an Array
