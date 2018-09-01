@@ -19,7 +19,12 @@
 
     exports.default = routes => {
         beforeEach(() => {
-            cy.server();
+            cy.server({
+                onRequest: () => {},
+                onResponse: response => {
+                    console.log(response);
+                }
+            });
 
             // disable all xhrs
             cy.route('**', {});

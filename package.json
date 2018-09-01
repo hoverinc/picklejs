@@ -17,12 +17,14 @@
     "prepush": "yarn build && yarn buildSite",
     "cypress:open": "yarn --cwd website cypress open website",
     "cypress:run": "yarn --cwd website cypress run --record --key <YOUR_KEY>",
-    "cypress:ci": "yarn --cwd website cypress --parallel"
+    "cypress:ci": "yarn --cwd website cypress --parallel",
+    "test": "jest"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-watch": "^2.0.7"
+    "babel-watch": "^2.0.7",
+    "jest": "^23.5.0"
   }
 }

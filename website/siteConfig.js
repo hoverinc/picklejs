@@ -1,12 +1,12 @@
-// List of projects/orgs using your project for the users page.
-const users = [
-  {
-    caption: 'Hover Inc',
-    image: 'https://www.alsop-louie.com/wp-content/uploads/2017/03/hover-logo-crop.png',
-    infoLink: 'https://www.hover.to',
-    pinned: true,
-  },
-];
+// // List of projects/orgs using your project for the users page.
+// const users = [
+//   {
+//     caption: 'Hover Inc',
+//     image: 'https://www.alsop-louie.com/wp-content/uploads/2017/03/hover-logo-crop.png',
+//     infoLink: 'https://www.hover.to',
+//     pinned: true,
+//   },
+// ];
 
 const siteConfig = {
   title: 'PickleJS', // Title for your website.
@@ -30,13 +30,10 @@ const siteConfig = {
     {blog: true, label: 'Blog'},
   ],
 
-  // If you have users set above, you add it here:
-  users,
-
   /* path to images for header/footer */
   headerIcon: 'img/pickle.png',
   footerIcon: 'img/pickle.png',
-  favicon: 'img/favicon.png',
+  favicon: 'img/pickle.png',
 
   /* Colors for website */
   colors: {
