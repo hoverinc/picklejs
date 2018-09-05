@@ -53,7 +53,7 @@
         // ex:  I type "toli" into the "Username Input"
         //      I type "toli" into "Username"
         //      I type "toli" into the "Username Input" on the "SignIn form"
-        When(REGEX.TYPE, type);
+        When(REGEX.TYPE, _functions.type);
 
         // ex:  When I replace the contents of "Username" with "toli"
         //      When I replace the contents of "Username" inside of the "Login Modal" with "toli"
@@ -81,7 +81,7 @@
         Then(REGEX.ON_PAGE, _functions.onPage);
 
         // ex: I should be redirected to the "Login Screen"
-        Then(REGEX.REDIRECTED_TO, redirectedTo);
+        Then(REGEX.REDIRECTED_TO, _functions.redirectedTo);
 
         // I should see 3 "Buttons" in "Modal"
         Then(REGEX.N_ELEMENTS, _functions.nElements);
@@ -100,10 +100,10 @@
         Then(REGEX.EL_DOES_NOT_EXIST, _functions.elDoesNotExist);
 
         // ex: "Username" should be "toli"
-        Then(REGEX.EL_CONTAINS_TEXT, shouldExist);
+        Then(REGEX.EL_CONTAINS_TEXT, _functions.elExists);
 
         // ex: "Username's" value should be "toli"
-        Then(REGEX.EL_VALUE, shouldExist);
+        Then(REGEX.EL_VALUE, _functions.elExists);
 
         // ex: I should see a "red" background on the "Button"
         Then(REGEX.EL_BACKBGROUND, _functions.elBackground);

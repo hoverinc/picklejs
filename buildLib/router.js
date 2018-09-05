@@ -35,6 +35,8 @@
 
     exports.default = routes => {
         beforeEach(() => {
+            cy.server();
+
             // disable all xhrs
             cy.route('**', {});
 
