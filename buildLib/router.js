@@ -16,33 +16,29 @@
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
+    const processRoutes = exports.processRoutes = routes => {
+        // implement our fixtures
+        Object.entries(routes).forEach(([path, endpoint]) => {
+            let method = 'GET';
+            const methods = ['POST', 'GET', 'DELETE', 'PUT'];
 
-    exports.default = routes => {
-        beforeEach(() => {
-            cy.server({
-                onRequest: () => {},
-                onResponse: response => {
-                    console.log(response);
+            methods.forEach(m => {
+                if (path.includes(`${m} `)) {
+                    path = path.replace(`${m} `, '');
+                    method = m;
                 }
             });
 
+            cy.route(method, path, `fixture:${endpoint}.json`).as(endpoint);
+        });
+    };
+
+    exports.default = routes => {
+        beforeEach(() => {
             // disable all xhrs
             cy.route('**', {});
 
-            // implement our fixtures
-            Object.entries(routes).forEach(([path, endpoint]) => {
-                let method = 'GET';
-                const methods = ['POST', 'GET', 'DELETE', 'PUT'];
-
-                methods.forEach(m => {
-                    if (path.includes(`${m} `)) {
-                        path = path.replace(`${m} `, '');
-                        method = m;
-                    }
-                });
-
-                cy.route(method, path, `fixture:${endpoint}.json`).as(endpoint);
-            });
+            processRoutes(routes);
         });
     };
 });

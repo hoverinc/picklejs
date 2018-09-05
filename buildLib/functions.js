@@ -1,22 +1,24 @@
 (function (global, factory) {
     if (typeof define === "function" && define.amd) {
-        define(['exports', './variables', 'words-to-numbers', 'pluralize'], factory);
+        define(['exports', 'hex-rgb', 'words-to-numbers', 'pluralize', './variables'], factory);
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('./variables'), require('words-to-numbers'), require('pluralize'));
+        factory(exports, require('hex-rgb'), require('words-to-numbers'), require('pluralize'), require('./variables'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.variables, global.wordsToNumbers, global.pluralize);
+        factory(mod.exports, global.hexRgb, global.wordsToNumbers, global.pluralize, global.variables);
         global.functions = mod.exports;
     }
-})(this, function (exports, _variables, _wordsToNumbers, _pluralize) {
+})(this, function (exports, _hexRgb, _wordsToNumbers, _pluralize, _variables) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.waitForResults = exports.shouldExist = exports.clickElement = exports.itemShouldBeVisible = exports.getSelector = exports.getNormalized = exports.parseNumberEls = exports.selectElement = exports.buildClassSelector = undefined;
+    exports.elBorder = exports.elBackground = exports.elDoesNotExist = exports.textOnEl = exports.elExists = exports.nElements = exports.redirectedTo = exports.onPage = exports.takeElSnapshot = exports.takeSnapshot = exports.dragAbove = exports.waitForResults = exports.open = exports.replace = exports.type = exports.click = exports.scroll = exports.getNormalized = exports.getSelector = exports.parseNumberEls = exports.buildClassSelector = exports.hex2rgbCSS = undefined;
+
+    var _hexRgb2 = _interopRequireDefault(_hexRgb);
 
     var _wordsToNumbers2 = _interopRequireDefault(_wordsToNumbers);
 
@@ -28,21 +30,16 @@
         };
     }
 
+    // COMMON FUNCTIONS
+
+    const hex2rgbCSS = exports.hex2rgbCSS = hex => {
+        const { red, green, blue, alpha } = (0, _hexRgb2.default)(hex);
+
+        return `rgb(${red}, ${green}, ${blue}${alpha < 255 ? `, ${parseInt(alpha * 100) / 100}` : ''})`;
+    };
+
     // Builds class selectors for our react Styled Component classes (ie. accounts for the `-randomString`). You should just be able to type classes as usual
     const buildClassSelector = exports.buildClassSelector = selectors => selectors.replace(/\.([^.[:\s]+)/g, '[class*="$1"]');
-
-    const selectElement = exports.selectElement = (className, text, context) => {
-        const selector = buildClassSelector(className);
-        const el = context ? context.get(selector) : cy.get(selector);
-
-        if (!text) return el;
-
-        if (el.contains(text)) {
-            return el;
-        } else {
-            throw new Error('Element doesn\'t contain text');
-        }
-    };
 
     // ex: Third Button => [ Button, 3 ]
     const parseNumberEls = exports.parseNumberEls = el => {
@@ -57,8 +54,8 @@
 
             if (numbers) {
                 return {
-                    el: parsed.replace(number[0] + ' ', ''),
-                    ordinal: parseInt(number[0])
+                    el: parsed.replace(numbers[0] + ' ', ''),
+                    ordinal: parseInt(numbers[0])
                 };
             } else {
                 return {
@@ -70,7 +67,7 @@
 
     // pass a single element or chain (parent => child) as an Array
     // to get the selected Cypress element
-    const getNormalized = exports.getNormalized = (elements, { text, singular } = {}) => {
+    const getSelector = exports.getSelector = (elements, { text, singular, showOrdinals } = {}) => {
         if (!Array.isArray(elements)) {
             elements = [elements];
         }
@@ -130,7 +127,17 @@
             className += `:contains("${text}")`;
         }
 
-        const el = selectElement(className);
+        className = buildClassSelector(className);
+
+        return showOrdinals ? {
+            className,
+            firstOrdinal
+        } : className;
+    };
+
+    const getNormalized = exports.getNormalized = (elements, { text, singular } = {}) => {
+        const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true });
+        const el = cy.get(className);
 
         if (firstOrdinal) {
             if (firstOrdinal === 'last') {
@@ -143,31 +150,124 @@
         return el;
     };
 
-    const getSelector = exports.getSelector = el => {
-        const selector = _variables.ELEMENT_SELECTORS[el];
+    // MORE SPECIALIZED FUNCTIONs (catching Regex)
 
-        if (!selector) {
-            throw Error(`getSelector cannot find class for ${el}`);
-        }
+    const scroll = exports.scroll = direction => {
+        let windowObj;
+        cy.window().then(win => {
+            windowObj = win;
+            return cy.get('body');
+        }).then(body => {
+            const { scrollHeight } = body[0];
+            const px = direction === 'top' ? 0 : scrollHeight + 100;
 
-        const className = selector.default ? selector.default : selector;
-
-        return buildClassSelector(className);
+            windowObj.scrollTo(0, px);
+        });
     };
 
-    const itemShouldBeVisible = exports.itemShouldBeVisible = el => getNormalized(el).first().should('exist');
+    const click = exports.click = (el, parent, text) => getNormalized([parent, el], { text }).first().click();
 
-    const clickElement = exports.clickElement = (el, parent, text) => getNormalized([parent, el], { text }).first().click();
+    const type = exports.type = (text, input, parent) => {
+        const randomVariableRegex = /<rand:(\w+)>/;
+        const randomVariable = text.match(randomVariableRegex);
 
-    const shouldExist = exports.shouldExist = (element, { parent, text }) => {
-        const els = [parent, element].filter(e => e);
-        const el = getNormalized(els);
+        if (randomVariable) {
+            const randomNumber = Math.round(Math.random() * 10000).toString();
+            text = text.replace(randomVariableRegex, randomNumber);
+            (0, _variables.setState)(randomVariable[1], randomNumber);
+        }
 
-        return text !== undefined ? el.contains(text) : el.should('exist');
+        const stateVariableRegex = /<var:(\w+) >/;
+        const stateVariable = text.match(stateVariableRegex);
+
+        if (stateVariable) {
+            text = text.replace(stateVariableRegex, _variables.STATE[stateVariable[1]]);
+        }
+
+        getNormalized([parent, input]).type(text);
+    };
+
+    const replace = exports.replace = (input, parent, contains, text) => {
+        getNormalized([parent, input], { text: contains }).clear().type(text);
+    };
+
+    const open = exports.open = screen => {
+        const url = _variables.SCREENS[screen];
+
+        if (!url) throw Error(`Screen ${screen} has no specified URL`);
+
+        cy.visit(url);
     };
 
     const waitForResults = exports.waitForResults = () => {
         cy.wait(1000);
+    };
+
+    // Experimental, not nailed down yet
+    const dragAbove = exports.dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
+        const $el1 = getNormalized([el1Parent, el1], { text: el1Contains });
+        $el1.trigger('mousedown', { which: 1, force: true });
+
+        let el2X = 0;
+        let el2Y = 0;
+
+        getNormalized([el2Parent, el2], { text: el2Contains }).then($el => {
+            const { x, y } = $el[0].getBoundingClientRect();
+            el2X = x;
+            el2Y = y;
+
+            return getNormalized('Ranking Form');
+        }).then($el => {
+            const { x: containerX, y: containerY } = $el[0].getBoundingClientRect();
+
+            const newPosOpts = {
+                x: 400,
+                y: 100,
+                force: true
+            };
+
+            $el.trigger('mousemove', newPosOpts).trigger('mouseup', newPosOpts);
+        });
+    };
+
+    const takeSnapshot = exports.takeSnapshot = name => {
+        cy.matchImageSnapshot(name, {
+            threshold: 1000,
+            thresholdType: 'pixel'
+        });
+    };
+
+    const takeElSnapshot = exports.takeElSnapshot = (el, parent) => {
+        getNormalized([parent, el]).matchImageSnapshot(el, {
+            threshold: 1000,
+            thresholdType: 'pixel'
+        });
+    };
+
+    const onPage = exports.onPage = screen => {
+        cy.url().should('contain', _variables.SCREENS[screen]);
+    };
+
+    const redirectedTo = exports.redirectedTo = onPage;
+
+    const nElements = exports.nElements = (number, el, parent, text) => {
+        getNormalized([parent, el], { singular: true, text }).should('have.length', number);
+    };
+
+    const elExists = exports.elExists = (el, parent, { text } = {}) => getNormalized([parent, el], { text }).first().should('exist');
+
+    const textOnEl = exports.textOnEl = (text, el, parent) => elExists(el, parent, { text });
+
+    const elDoesNotExist = exports.elDoesNotExist = (el, parent, text) => {
+        getNormalized([parent, el], { text, singular: true }).should('have.length', 0);
+    };
+
+    const elBackground = exports.elBackground = (background, el, parent) => {
+        getNormalized([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background));
+    };
+
+    const elBorder = exports.elBorder = (background, el, parent) => {
+        getNormalized([parent, el]).should('have.css', 'border-color', hex2rgbCSS(background));
     };
 });
 //# sourceMappingURL=functions.js.map
