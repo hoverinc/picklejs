@@ -6,7 +6,7 @@ PickleJS is an addon for the Cucumber plugin for Cypress allowing automatic stor
 ## Installation
 ### Add The Dependency
 ```
-yarn add --dev https://github.com/tolicodes/picklejs
+yarn add --dev picklejs
 ```
 
 ### Create the Selector JSON Files
