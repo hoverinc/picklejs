@@ -73,7 +73,7 @@ class HomeSplash extends React.Component {
           <ProjectTitle />
           <PromoSection>
             <Button href="/docs/getting-started">Get Started</Button>
-            <Button href="https://github.com/tolicodes/picklejs">Github</Button>
+            <Button href="https://github.com/hoverinc/picklejs">Github</Button>
           </PromoSection>
 
           <Iframe
@@ -144,7 +144,7 @@ Here are some examples. All human readable. You just need to define you selector
     
     Scenario: Sign up for updates
         When I open the "Home Page"
-        And I enter "toli@tolicodes.com" into the "Email Input" in the "Newsletter Form"
+        And I enter "toli@hoverinc.com" into the "Email Input" in the "Newsletter Form"
         And I click "Submit" in the "Newletter Form"
         Then I should see a "Newsletter Signup Confirmation Popup"
 

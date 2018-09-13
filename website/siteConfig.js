@@ -61,7 +61,7 @@ const siteConfig = {
   ogImage: 'img/pickle.png',
   twitterImage: 'img/pickle.png',
 
-  repoUrl: 'https://github.com/tolicodes/picklejs',
+  repoUrl: 'https://github.com/hoverinc/picklejs',
 };
 
 module.exports = siteConfig;

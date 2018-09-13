@@ -50,12 +50,12 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             <a href={`${this.props.config.baseUrl}blog`}>Blog</a>
-            <a href="https://github.com/tolicodes/picklejs">GitHub</a>
+            <a href="https://github.com/hoverinc/picklejs">GitHub</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
-              data-count-href="/tolicodes/picklejs/stargazers"
+              data-count-href="/hoverinc/picklejs/stargazers"
               data-show-count="true"
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub">
@@ -64,7 +64,7 @@ class Footer extends React.Component {
           </div>
         </section>
 
-        <section className="copyright">Open Source By <a href="http://tolicodes.com">@tolicodes</a> from <a href="http://hover.to">HOVER</a> </section>
+        <section className="copyright">Open Source By <a href="http://hoverinc.com">@hoverinc</a> from <a href="http://hover.to">HOVER</a> </section>
       </footer>
     );
   }

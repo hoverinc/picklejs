@@ -8,4 +8,4 @@ sidebar_label: Example App
 
 This website IS the example app (wooooah). Everything is tested using cypress + Pickle. 
 
-You can view the source for the website in the [PickleJS Github Repo](https://github.com/tolicodes/picklejs/website) (under `/website`) and all the cypress tests under `website/cypress`.
+You can view the source for the website in the [PickleJS Github Repo](https://github.com/hoverinc/picklejs/website) (under `/website`) and all the cypress tests under `website/cypress`.

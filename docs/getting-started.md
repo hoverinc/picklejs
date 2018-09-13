@@ -12,7 +12,7 @@ We assume that you are familiar with the Cypress framework. Follow [these instru
 
 ## Add The Dependency
 ```
-yarn add --dev https://github.com/tolicodes/picklejs
+yarn add --dev https://github.com/hoverinc/picklejs
 ```
 
 ## Create Necessary Files
