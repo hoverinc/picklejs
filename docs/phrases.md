@@ -1,7 +1,7 @@
 ---
-id: api
-title: API
-sidebar_label: API
+id: phrases
+title: Phrases
+sidebar_label: Phrases
 ---
 
 ## Key Concepts
@@ -77,6 +77,19 @@ Ex:
 * `I type "toli" into "Username"`
 * `I type "toli" into the "Username Input" on the "SignIn form"`
 
+#### Generating Random Data
+This is very useful when you need to create a new User during every run.
+
+In the following example, a user with the username with a random digit (ex: "user92372") will be created. The ID 932372 will be saved to the test's internal state as `userId`. And then in any test it can be retrieved.
+
+```
+When I type "user<rand:userId>" in the "Username Field" in the "Register Form"
+And I click "Submit" in the "Register Form"
+And I type "user<var:userId>" in the "Username Field" in the "Login Form"
+And I click "Submit" in the "Login Form"
+Then I should be redirected to the "Home Page"
+```
+
 ### Replacing Input Contents
 `When I replace the contents [of] <Element> with "{string}"`
 
@@ -104,18 +117,28 @@ Waits for an AJAX request to finish.
 This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
 
 ### Taking a Snapshot
-`I take a snapshot name "{string}"`
+`I take a snapshot named "{string}"`
 
 Takes a snapshot of the current screen and compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
+
+### Taking an Element Snapshot
+`I take a snapshot of the "Header"`
+Takes a snapshot of just the element, saves it with the Element's name, and compares to a previous snapshot.
 
 ## Thens
 ### Redirect 
 `I should be redirected to the <Screen>`
 
-Redirects to a the Screen's url
+Checks if I am on the Screen's url
 
 Ex:
 * `I should be redirected to the "Login Screen"`
+
+### On Page
+This is an alias of `Redirect`
+`I should be on the <Screen>`
+
+Checks if I am on the Screen's url
 
 ### Element Existance
 #### Element Exists
@@ -127,7 +150,7 @@ Ex:
 * `I should see a "Button"`
 * `I should see a "Button" inside the "Modal"`
 
-#### Specified Number Exist
+#### Specified Number of Elements Exist
 `I should see {int} <Element> [in] <Element> [containing "{string}]`
 
 Checks to see if there are specified number of Elements (optionally containing some text) in another Element
@@ -147,7 +170,7 @@ Ex:
 * `I should not see "Buttons" on the "Page"`
 * `I should not see the "Button"`
 
-### Containing Text
+### Element Containing Text
 #### Contains Text
 `I should see "{string}" [on the] <Element>`
 
@@ -157,7 +180,7 @@ Ex:
 * `I should see "Press Me" on the "Button" inside the "Modal"`
 
 #### Input Has Value
-`\<Input\> should be "{string}"`
+`<Input> should be "{string}"`
 `<Element> value should be "{string}"`
 
 There should be text present on the element
@@ -170,5 +193,3 @@ Ex:
 Any function referring to a color should be in RGB format (`#ffffff`). If the orginal color is in RGB format it will be converted.
 
 In the future we will support multiple color formats and even "fuzzy color matching"
-
-###

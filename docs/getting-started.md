@@ -57,7 +57,7 @@ This goes at the top level of your test files. You will put the URLs of all your
 ```
 {
     "Home Page": "https://picklejs.com/",
-    "API Docs": "https://picklejs.com/api",
+    "Phrases": "https://picklejs.com/phrases",
     "Getting Started": "https://picklejs.com/getting-started"
 }
 ```
@@ -81,7 +81,7 @@ You can use any selector supported by Cypress, which supports most CSS3 selector
 
     "Sidebar": {
         "default": ".Sidebar",
-        "API Link": "a:contains('API')"
+        "Phrases Link": "a:contains('Phrases')"
     }
 }
 ```

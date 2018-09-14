@@ -1,11 +1,16 @@
 {
   "docs": {
-    "Getting Started": [
+    "Basics": [
       "getting-started",
-      "api",
-      "router",
+      "phrases",
+      "functions",
+      "router"
+    ],
+    "Resources": [
       "example-app",
-      "recommended-cypress-setup",
+      "recommended-cypress-setup"
+    ],
+    "Developing": [
       "extending",
       "developing",
       "this-website"
