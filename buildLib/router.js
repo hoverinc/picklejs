@@ -38,7 +38,7 @@
             cy.server();
 
             // disable all xhrs
-            cy.route('**', {});
+            // cy.route('**', {});
 
             processRoutes(routes);
         });

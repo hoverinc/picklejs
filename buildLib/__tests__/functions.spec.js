@@ -171,11 +171,11 @@
                 expect(buildClassSelector('.test-class:hover')).toEqual('[class*="test-class"]:hover');
             });
 
-            it('Matches Child Classes', () => {
+            it('Handles Child Classes', () => {
                 expect(buildClassSelector('.test-class .class-2')).toEqual('[class*="test-class"] [class*="class-2"]');
             });
 
-            it('Matches Multiple Classes', () => {
+            it('Handles Multiple Classes', () => {
                 expect(buildClassSelector('.test-class.class-2')).toEqual('[class*="test-class"][class*="class-2"]');
             });
 
@@ -183,19 +183,12 @@
                 expect(buildClassSelector('.test-class:contains("Good Stuff")')).toEqual('[class*="test-class"]:contains("Good Stuff")');
             });
 
-            it('Matches Wierd Combos of Classes', () => {
+            it('Handles Wierd Combos of Classes', () => {
                 expect(buildClassSelector('.test-class.class-2:active .class3:hover > .class4')).toEqual('[class*="test-class"][class*="class-2"]:active [class*="class3"]:hover > [class*="class4"]');
             });
         });
 
         describe('parseNumberEls', () => {
-            it('handles last element', () => {
-                expect(parseNumberEls('last Button')).toEqual({
-                    ordinal: 'last',
-                    el: 'Button'
-                });
-            });
-
             it('handles numbered elements', () => {
                 expect(parseNumberEls('third Button')).toEqual({
                     ordinal: 3,
@@ -204,6 +197,13 @@
 
                 expect(parseNumberEls('fifty-sixth Button')).toEqual({
                     ordinal: 56,
+                    el: 'Button'
+                });
+            });
+
+            it('handles last element', () => {
+                expect(parseNumberEls('last Button')).toEqual({
+                    ordinal: 'last',
                     el: 'Button'
                 });
             });
@@ -222,7 +222,7 @@
                 expect(get).toBeCalledWith('[class*="button"]');
             });
 
-            it('an element and its parent', () => {
+            it('accepts an element and its parent', () => {
                 getNormalized(['Modal', 'Button']);
 
                 expect(get).toBeCalledWith('[class*="modal"] [class*="modal-button"]');
@@ -255,6 +255,12 @@
                 expect(last).toBeCalled();
             });
 
+            it('selects the correct element if text is passed', () => {
+                getNormalized('Button', { text: 'Hi There' });
+
+                expect(get).toBeCalledWith('[class*="button"]:contains("Hi There")');
+            });
+
             it('throws an error if the selector is not defined', () => {
                 expect(() => {
                     getNormalized(['Link']);
@@ -267,12 +273,6 @@
                 expect(() => {
                     getNormalized(['Header', 'Link']);
                 }).toThrow('The className was not defined for Header');
-            });
-
-            it('selects the correct element if text is passed', () => {
-                getNormalized('Button', { text: 'Hi There' });
-
-                expect(get).toBeCalledWith('[class*="button"]:contains("Hi There")');
             });
         });
 
@@ -355,6 +355,10 @@
         });
 
         describe('type', () => {
+            it('works with text', () => {
+                type('hello', 'Input');
+                expect(typeFn).toBeCalledWith('hello');
+            });
             it('works with a random variable', () => {
                 type('user<rand:userId>', 'Input');
 
