@@ -1,6 +1,6 @@
 {
   "name": "picklejs",
-  "version": "0.86.0",
+  "version": "0.87.0",
   "main": "buildLib",
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
