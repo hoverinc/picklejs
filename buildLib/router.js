@@ -33,12 +33,12 @@
         });
     };
 
-    exports.default = routes => {
+    exports.default = (routes, { stubAll } = {}) => {
         beforeEach(() => {
             cy.server();
 
             // disable all xhrs
-            // cy.route('**', {});
+            if (stubAll) cy.route('**', {});
 
             processRoutes(routes);
         });
