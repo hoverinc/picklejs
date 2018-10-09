@@ -26,7 +26,7 @@
     }
 
     (0, _command.addMatchImageSnapshotCommand)({
-        failureThreshold: 2,
+        failureThreshold: '0.02',
         failureThresholdType: 'percent',
         capture: 'viewport'
     });
