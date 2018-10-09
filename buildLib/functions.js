@@ -16,7 +16,7 @@
     Object.defineProperty(exports, "__esModule", {
         value: true
     });
-    exports.elBorder = exports.elBackground = exports.elDoesNotExist = exports.textOnEl = exports.elExists = exports.nElements = exports.redirectedTo = exports.onPage = exports.takeElSnapshot = exports.takeSnapshot = exports.dragAbove = exports.waitForResults = exports.open = exports.replace = exports.type = exports.click = exports.scroll = exports.getNormalized = exports.getSelector = exports.parseNumberEls = exports.buildClassSelector = exports.hex2rgbCSS = undefined;
+    exports.elBorder = exports.elBackground = exports.elDoesNotExist = exports.textOnEl = exports.elExists = exports.nElements = exports.redirectedTo = exports.onPage = exports.takeElSnapshot = exports.takeSnapshot = exports.dragAbove = exports.waitForResults = exports.wait = exports.open = exports.replace = exports.type = exports.click = exports.scroll = exports.getNormalized = exports.getSelector = exports.parseNumberEls = exports.buildClassSelector = exports.hex2rgbCSS = undefined;
 
     var _hexRgb2 = _interopRequireDefault(_hexRgb);
 
@@ -199,6 +199,10 @@
         cy.visit(url);
     };
 
+    const wait = exports.wait = secs => {
+        cy.wait(secs * 1000);
+    };
+
     const waitForResults = exports.waitForResults = () => {
         cy.wait(1000);
     };
@@ -231,10 +235,7 @@
     };
 
     const takeSnapshot = exports.takeSnapshot = name => {
-        cy.matchImageSnapshot(name, {
-            threshold: 1000,
-            thresholdType: 'pixel'
-        });
+        cy.matchImageSnapshot(name);
     };
 
     const takeElSnapshot = exports.takeElSnapshot = (el, parent) => {
