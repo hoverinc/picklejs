@@ -234,8 +234,8 @@
         });
     };
 
-    const takeSnapshot = exports.takeSnapshot = name => {
-        cy.matchImageSnapshot(name);
+    const takeSnapshot = exports.takeSnapshot = () => {
+        cy.matchImageSnapshot();
     };
 
     const takeElSnapshot = exports.takeElSnapshot = (el, parent) => {

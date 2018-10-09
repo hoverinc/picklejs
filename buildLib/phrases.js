@@ -26,7 +26,7 @@
         WAIT_FOR_RESULTS: (0, _regexBuilder.r)(`I wait for results to load`),
         WAIT_SECONDS: (0, _regexBuilder.r)(`I wait ${_regexBuilder.int} seconds`),
         DRAG_ABOVE: (0, _regexBuilder.r)(`I drag${_regexBuilder.elInEl} above${_regexBuilder.elInEl}`),
-        TAKE_SNAPSHOT: (0, _regexBuilder.r)(`I take a snapshot named ${_regexBuilder.string}`),
+        TAKE_SNAPSHOT: (0, _regexBuilder.r)(`I take a snapshot`),
         TAKE_EL_SNAPSHOT: (0, _regexBuilder.r)(`I take a snapshot of${_regexBuilder.elInEl}`),
         ON_PAGE: (0, _regexBuilder.r)(`I should be on${_regexBuilder.page}`),
         REDIRECTED_TO: (0, _regexBuilder.r)(`I should be redirected to${_regexBuilder.page}`),
