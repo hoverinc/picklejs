@@ -2044,9 +2044,9 @@ cypress-cucumber-preprocessor@^1.2.2:
     glob "^7.1.2"
     through "^2.3.8"
 
-cypress-image-snapshot@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/cypress-image-snapshot/-/cypress-image-snapshot-2.2.1.tgz#1b5f1d168dc1fc0f8873d6582c62d4d0cf1efcb3"
+cypress-image-snapshot@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/cypress-image-snapshot/-/cypress-image-snapshot-2.0.1.tgz#b919fc1c6ab408a2953015d9e8c5deccb2fccc46"
   dependencies:
     fs-extra "^7.0.0"
     jest-image-snapshot "2.4.3"
