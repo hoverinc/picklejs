@@ -7,6 +7,7 @@
     "cypress-image-snapshot": "~1.0.2",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
+    "wdio-mocha-framework": "^0.6.4",
     "words-to-numbers": "^1.5.1"
   },
   "scripts": {
@@ -25,6 +26,8 @@
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-watch": "^2.0.7",
-    "jest": "^23.5.0"
+    "chai": "^4.2.0",
+    "jest": "^23.5.0",
+    "jest-cucumber": "^1.0.11"
   }
 }
