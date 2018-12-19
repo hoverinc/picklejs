@@ -1,10 +1,9 @@
-import {
+const {
     scroll,
     click,
     type,
     replace,
     open,
-    wait,
     waitForResults,
     dragAbove,
     takeSnapshot,
@@ -17,11 +16,11 @@ import {
     elDoesNotExist,
     elBackground,
     elBorder,
-} from './functions';
+} = require('./cypressFunctions');
 
-import REGEX from './regex';
+const REGEX = require('../common/regex');
 
-export default () => {
+module.exports = () => {
     // ex: I scroll to the bottom the "Modal"
     When(REGEX.SCROLL, scroll);
 
@@ -70,7 +69,7 @@ export default () => {
 
     // ex: I should see "Press Me" on the "Button" inside the "Modal"
     Then(REGEX.TEXT_ON_EL, textOnEl);
- 
+
     // putting after because the one before exclusively works 
     // for text and doesn't have a verb before it
     // ex: I should see "Press Me Button" on the "Button" inside the "Modal"

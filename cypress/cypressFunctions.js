@@ -1,12 +1,12 @@
-import {
+const {
     SCREENS,
     STATE,
     setState,
-} from './variables';
+} = require('../common/variables');
 
-import { getSelector } from './functions';
+const { getSelector, hex2rgbCSS } = require('../common/functions');
 
-export const getNormalized = (elements, { text, singular } = {}) => {
+const getNormalized = (elements, { text, singular } = {}) => {
     const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
     const el = cy.get(className);
 
@@ -23,7 +23,7 @@ export const getNormalized = (elements, { text, singular } = {}) => {
 
 // MORE SPECIALIZED FUNCTIONs (catching Regex)
 
-export const scroll = (direction) => {
+const scroll = (direction) => {
     let windowObj;
     cy.window()
         .then(win => {
@@ -40,13 +40,13 @@ export const scroll = (direction) => {
         });
 }
 
-export const click = (el, parent, text) => (
+const click = (el, parent, text) => (
     getNormalized([parent, el], { text })
         .first()
         .click()
 );
 
-export const type = (text, input, parent) => {
+const type = (text, input, parent) => {
     const randomVariableRegex = /<rand:(\w+)>/;
     const randomVariable = text.match(randomVariableRegex);
     
@@ -66,13 +66,13 @@ export const type = (text, input, parent) => {
     getNormalized([parent, input]).type(text);
 }
 
-export const replace = (input, parent, contains, text) => {
+const replace = (input, parent, contains, text) => {
     getNormalized([parent, input], { text: contains })
         .clear()  
         .type(text);
 }
 
-export const open = screen => {
+const open = screen => {
     const url = SCREENS[screen];
     
     if(!url) throw Error(`Screen ${screen} has no specified URL`);
@@ -80,16 +80,16 @@ export const open = screen => {
     cy.visit(url); 
 }
 
-export const wait = (secs) => {
+const wait = (secs) => {
     cy.wait(secs * 1000);
 }
 
-export const waitForResults = () => {
+const waitForResults = () => {
     cy.wait(1000);
 }
 
 // Experimental, not nailed down yet
-export const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
+const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
     const $el1 =  getNormalized([el1Parent, el1], { text: el1Contains });
     $el1.trigger('mousedown', { which: 1, force: true });
 
@@ -117,43 +117,65 @@ export const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contai
     });
 }
 
-export const takeSnapshot = () => {
+const takeSnapshot = () => {
     cy.matchImageSnapshot();
 }
 
-export const takeElSnapshot =  (el, parent) => {
+const takeElSnapshot =  (el, parent) => {
     getNormalized([parent, el]).matchImageSnapshot(el, {
         threshold: 1000,
         thresholdType: 'pixel'
     });
 }
 
-export const onPage = screen => {
+const onPage = screen => {
     cy.url().should('contain', SCREENS[screen]);
 }
 
-export const redirectedTo = onPage;
+const redirectedTo = onPage;
 
-export const nElements = (number, el, parent, text) => {
+const nElements = (number, el, parent, text) => {
     getNormalized([parent, el], { singular: true, text })
         .should('have.length', number);
 };
 
-export const elExists = (el, parent, { text } = {}) => (
+const elExists = (el, parent, { text } = {}) => (
     getNormalized([parent, el], { text }).first().should('exist')
 );
 
-export const textOnEl = (text, el, parent) => elExists(el, parent, { text });
+const textOnEl = (text, el, parent) => elExists(el, parent, { text });
 
-export const elDoesNotExist =  (el, parent, text) => {
+const elDoesNotExist =  (el, parent, text) => {
     getNormalized([parent, el], { text, singular: true })
         .should('have.length', 0);
 }
 
-export const elBackground = (background, el, parent) => {
+const elBackground = (background, el, parent) => {
     getNormalized([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background))
 };
 
-export const elBorder = (background, el, parent) => {
+const elBorder = (background, el, parent) => {
     getNormalized([parent, el]).should('have.css', 'border-color', hex2rgbCSS(background))
 }
+
+module.exports = {
+    getNormalized,
+    scroll,
+    click,
+    type,
+    replace,
+    open,
+    wait,
+    waitForResults,
+    dragAbove,
+    takeSnapshot,
+    takeElSnapshot,
+    onPage,
+    redirectedTo,
+    nElements,
+    textOnEl,
+    elExists,
+    elDoesNotExist,
+    elBackground,
+    elBorder,
+};

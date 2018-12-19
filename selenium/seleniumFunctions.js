@@ -3,9 +3,9 @@ const {
     SCREENS,
     STATE,
     setState,
-} = require('./variables');
+} = require('../common/variables');
 
-const { getSelector } = require('./functions');
+const { getSelector } = require('../common/functions');
 
 const EXIST_TIMEOUT = 60000;
 

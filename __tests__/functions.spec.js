@@ -1,5 +1,5 @@
 import * as functions from '../functions';
-import { ELEMENT_SELECTORS, STATE, SCREENS, setScreens } from '../variables';
+import { ELEMENT_SELECTORS, STATE, setScreens } from '../common/variables';
 
 let {
     hex2rgbCSS,
@@ -27,7 +27,7 @@ let {
     elBorder,
 } = functions;
 
-jest.mock('../variables');
+jest.mock('../common/variables');
 
 describe('functions', () => {
     let get;

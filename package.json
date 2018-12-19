@@ -13,8 +13,6 @@
   },
   "scripts": {
     "start": "cd website && yarn start",
-    "build": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
-    "watch": "babel --watch lib/  --out-dir ./buildLib --source-maps",
     "buildSite": "cd website && yarn build",
     "prepush": "yarn build && yarn buildSite",
     "cypress:open": "yarn --cwd website cypress open website",

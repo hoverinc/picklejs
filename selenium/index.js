@@ -7,7 +7,7 @@ const {
 const {
     setScreens,
     setElementSelector
-} = require('./variables');
+} = require('../common/variables');
 const phrases = require('./seleniumPhrases');
 
 function runStep(step, browser) {

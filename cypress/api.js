@@ -1,5 +1,5 @@
 // Creates an error response for given URL
-export const apiError = (url, method='GET', error = 'Error') => (
+const apiError = (url, method='GET', error = 'Error') => (
     cy.route({
         method,
         url,
@@ -9,7 +9,7 @@ export const apiError = (url, method='GET', error = 'Error') => (
 );
 
 // Creates success response for given URL
-export const apiSuccess = (url, method='GET', body = {}) => (
+const apiSuccess = (url, method='GET', body = {}) => (
     cy.route({
         method,
         url,
@@ -18,10 +18,16 @@ export const apiSuccess = (url, method='GET', body = {}) => (
     })
 );
 
-export const apiNotFound = (url, method='GET') => (
+const apiNotFound = (url, method='GET') => (
     cy.route({
         method,
         url,
         status: 404,
     })
 );
+
+module.exports = {
+    apiError,
+    apiSuccess,
+    apiNotFound,
+}

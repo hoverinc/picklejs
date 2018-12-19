@@ -28,8 +28,7 @@ Your Cypress installation should already scaffold most of this. The files you'll
     /your-component
         - your-feature.feature <-- create this
 
-/plugins
-    - index.js <--change this
+/plugins.js <--change this
 
 /support
     step_definitions <-- create this
@@ -43,10 +42,10 @@ Your Cypress installation should already scaffold most of this. The files you'll
     - index.js
 ```
 
-### /plugins/index.js
+### /plugins.js
 Replace the contents with:
 ```
-const pickle = require('picklejs/index');
+const pickle = require('picklejs/cypress/plugin');
 
 module.exports = pickle; 
 ```
@@ -90,22 +89,22 @@ You can use any selector supported by Cypress, which supports most CSS3 selector
 Replace the contents with:
 
 ```
-import generateAutoPhrases from 'picklejs/buildLib/generateAutoPhrases';
+import generateAutoPhrases from 'picklejs/cypress';
 
 import {
     setScreens,
     setElementSelector,
-} from 'picklejs/buildLib/variables';
+} from 'picklejs/common/variables';
 
 import selectors from './selectors.json';
-import screens from '../screens.json';
+import screens from './screens.json';
 
 generateAutoPhrases();
 setScreens(screens);
 setElementSelector(selectors);
 ```
 
-### 
+### Add selectors
 Inside your `step_definitions` for each feature, create a
 
 selectors.json
@@ -125,27 +124,25 @@ In your JS file for the feature add
 import selectors from './selectors.json';
 import {
     setElementSelector,
-} from '../../helpers/variables';
+} from 'picklejs/common/variables';
 
 setElementSelector(selectors);
 ```
 
-### Add generateAutoPhrases
-Inside your `step_definitions` for each feature, put in the main JS file:
+### Cypress
+Inside your `step_definitions` in your main JS file put:
 
 ```
-import generateAutoPhrases from '../../helpers/generateAutoPhrases';
+import init from 'picklejs/cypress';
 
-generateAutoPhrases();
+init();
 ```
 
-### Add Helper Functions
-Inside your `step_definitions` for each module, create a 
+### Selenium
+Inside your `step_definitions` in your main JS file put:
+
 ```
-import {
-    getNormalized,
-    waitForResults,
-    clickElement,
-    getSelector,
-} from '../../helpers/functions';
+import init from 'picklejs/selenium';
+
+init();
 ```

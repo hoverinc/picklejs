@@ -20,7 +20,7 @@ const {
     elBorder,
 } = require('./seleniumFunctions');
 
-const REGEX = require('./regex');
+const REGEX = require('../common/regex');
 
 const phrases = [];
 
