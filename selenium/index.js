@@ -44,7 +44,6 @@ module.exports = function runTests({
                 steps
             }) => {
                 it(title, function () {
-                    console.log('yo')
                     steps.forEach(({
                         stepText
                     }) => {
