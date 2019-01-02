@@ -32,8 +32,8 @@ cy.route('GET', '/api/route5', 'fixture:route5.json');
 
 Essentially, if you don't provide the HTTP Verb, it will use `GET`, and it will transform the value of the hash map by tacking on a `.json` at the end. Super simple
 
-## API Server (Selenium & Other)
-For Selenium we might just want to stand up a static API Server in place of the usual backend.
+## Mock API Server (Selenium & Other)
+For Selenium we might just want to stand up a static API Server in place of the usual backend. It follows the same exact format as the Cypress fixtures above, so you can share configuration easily.
 
 Note that there currently isn't a way to mock a server that's not running on localhost (ex: if you use external APIs).
 
@@ -50,7 +50,7 @@ apiServer({
         'DELETE /api/route4': 'route4.json',
         '/api/route5': 'route5.json',
     },
-    fixturePath: './path/to/your/fixtures/',
+    fixturesRoot: '/absolute/path/to/your/fixtures/',
     port: 5000, //the port the api server runs on
 });
 ```
