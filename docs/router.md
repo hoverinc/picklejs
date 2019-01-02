@@ -12,11 +12,11 @@ You specify routes and the corresponding mocks in the following format
 import router from 'picklejs/cypress/router'
 
 router({
-    'POST /api/route1': 'route1',
-    'GET /api/route2': 'route2',
-    'PUT /api/route3': 'route3',
-    'DELETE /api/route4': 'route4',
-    '/api/route5': 'route5',
+    'POST /api/route1': 'route1.json',
+    'GET /api/route2': 'route2.json',
+    'PUT /api/route3': 'route3.json',
+    'DELETE /api/route4': 'route4.json',
+    '/api/route5': 'route5.json',
 });
 ```
 
@@ -31,6 +31,29 @@ cy.route('GET', '/api/route5', 'fixture:route5.json');
 ```
 
 Essentially, if you don't provide the HTTP Verb, it will use `GET`, and it will transform the value of the hash map by tacking on a `.json` at the end. Super simple
+
+## API Server (Selenium & Other)
+For Selenium we might just want to stand up a static API Server in place of the usual backend.
+
+Note that there currently isn't a way to mock a server that's not running on localhost (ex: if you use external APIs).
+
+To use it simply do
+
+```
+const apiServer = require('picklejs/common/apiServer')
+
+apiServer({
+    routes: {
+        'POST /api/route1': 'route1.json',
+        'GET /api/route2': 'route2.json',
+        'PUT /api/route3': 'route3.json',
+        'DELETE /api/route4': 'route4.json',
+        '/api/route5': 'route5.json',
+    },
+    fixturePath: './path/to/your/fixtures/',
+    port: 5000, //the port the api server runs on
+});
+```
 
 ## API Helpers
 We also prover a bunch of API helpers for quickly returning results that aren't in fixtures.
