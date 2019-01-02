@@ -2,18 +2,18 @@ const parseRoute = require('../common/parseRoute');
 
 const processRoutes = (routes) => {
     // implement our fixtures
-    Object.entries(routes).forEach(([path, endpoint]) => {
+    Object.entries(routes).forEach(([route, endpoint]) => {
         const {
             method,
             path
-        } = parseRoute(path);
+        } = parseRoute(route);
 
         cy.route(method, path, `fixture:${endpoint}`)
             .as(endpoint);
     });
 }
 
-module.exports =(routes, { stubAll } = {}) => {
+module.exports = (routes, { stubAll } = {}) => {
     beforeEach(() => {
         cy.server();
         
