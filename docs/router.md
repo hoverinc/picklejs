@@ -9,7 +9,7 @@ The router provides a very simple abstraction over Cypress's internal `route` fu
 You specify routes and the corresponding mocks in the following format
 
 ```
-import router from 'cypress/buildLib/router'
+import router from 'picklejs/cypress/router'
 
 router({
     'POST /api/route1': 'route1',

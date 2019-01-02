@@ -1,14 +1,14 @@
 import selectors from './selectors.json';
 import screens from './screens.json';
 
-import generateAutoPhrases from 'picklejs/buildLib/generateAutoPhrases';
+import init from 'picklejs/cypress';
 
 import {
     setScreens,
     setElementSelector,
-} from 'picklejs/buildLib/variables';
+} from 'picklejs/common/variables';
 
-generateAutoPhrases();
+init();
 
 setScreens(screens);
 setElementSelector(selectors);

@@ -1,2 +1,1 @@
 import './router';
-import './commands';

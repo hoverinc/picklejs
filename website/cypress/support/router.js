@@ -1,4 +1,4 @@
-import router from 'picklejs/buildLib/router';
+import router from 'picklejs/common/router';
 
 router({ 
 });

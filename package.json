@@ -1,18 +1,18 @@
 {
   "name": "picklejs",
-  "version": "0.81.0",
+  "version": "0.99.0",
   "main": "buildLib",
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
-    "cypress-image-snapshot": "^2.0.1",
+    "cypress-image-snapshot": "~1.0.2",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
+    "wdio-mocha-framework": "^0.6.4",
+    "wdio-visual-regression-service": "^0.9.0",
     "words-to-numbers": "^1.5.1"
   },
   "scripts": {
     "start": "cd website && yarn start",
-    "build": "babel lib/  --out-dir ./buildLib --source-maps && yarn version --new-version minor",
-    "watch": "babel --watch lib/  --out-dir ./buildLib --source-maps",
     "buildSite": "cd website && yarn build",
     "prepush": "yarn build && yarn buildSite",
     "cypress:open": "yarn --cwd website cypress open website",
@@ -25,6 +25,8 @@
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-watch": "^2.0.7",
-    "jest": "^23.5.0"
+    "chai": "^4.2.0",
+    "jest": "^23.5.0",
+    "jest-cucumber": "^1.0.11"
   }
 }

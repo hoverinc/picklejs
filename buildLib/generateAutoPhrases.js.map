@@ -1,1 +1,0 @@
-{"version":3,"sources":["../lib/generateAutoPhrases.js"],"names":["phrases"],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;AAEA;;oBAEeA,iB","file":"generateAutoPhrases.js","sourcesContent":["import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';\nimport phrases from './phrases';\naddMatchImageSnapshotCommand();\n\nexport default phrases;"]}

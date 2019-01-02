@@ -1,4 +1,4 @@
-export const processRoutes = (routes) => {
+const processRoutes = (routes) => {
     // implement our fixtures
     Object.entries(routes).forEach(([path, endpoint]) => {
         let method = 'GET';
@@ -16,13 +16,13 @@ export const processRoutes = (routes) => {
     });
 }
 
-export default (routes) => {
+module.exports =(routes, { stubAll } = {}) => {
     beforeEach(() => {
         cy.server();
         
         // disable all xhrs
-        cy.route('**', {});
-    
+        if(stubAll) cy.route('**', {});
+
         processRoutes(routes);
     });
 }
