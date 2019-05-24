@@ -153,7 +153,7 @@ Here are some examples. All human readable. You just need to define you selector
         And I type "pickle" into the "Search Input" in the "Header"
         Then the "first Result" in "Search Results" should contain "pickle"
 
-        And I repplace the contents of "Search Input" in the "Header" with "scroll"
+        And I replace the contents of "Search Input" in the "Header" with "scroll"
         Then  the "first Result" in "Search Results" should contain "scroll"
     
     Scenario: I scroll to the bottom of the page
