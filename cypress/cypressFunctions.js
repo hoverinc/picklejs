@@ -143,6 +143,10 @@ const elExists = (el, parent, { text } = {}) => (
     getNormalized([parent, el], { text }).first().should('exist')
 );
 
+const elHasValue = (el, parent, contains, text) => (
+    getNormalized([parent, el]).should('have.value', text)
+);
+
 const textOnEl = (text, el, parent) => elExists(el, parent, { text });
 
 const elDoesNotExist =  (el, parent, text) => {
@@ -175,6 +179,7 @@ module.exports = {
     nElements,
     textOnEl,
     elExists,
+    elHasValue,
     elDoesNotExist,
     elBackground,
     elBorder,
