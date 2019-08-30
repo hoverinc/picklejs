@@ -116,6 +116,16 @@ Waits for an AJAX request to finish.
 
 This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
 
+### Waiting For a Request to Resolve
+`I wait for "hoverApi/v1/users_orgs" to resolve`
+
+Wait for a request defined in the routes file to resolve.
+
+### Waiting For an Amount of Time
+`I wait for 3 seconds`
+
+Wait for the specified amount of seconds.
+
 ### Taking a Snapshot
 `I take a snapshot named "{string}"`
 

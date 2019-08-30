@@ -4,7 +4,7 @@ const {
     type,
     replace,
     open,
-    waitForResults,
+    waitForRoute,
     dragAbove,
     takeSnapshot,
     takeElSnapshot,
@@ -43,8 +43,8 @@ module.exports = () => {
     // ex: I open the "Login Screen"
     When(REGEX.OPEN, open);
 
-    // @TODO: Figure out while default way isn't working
-    When(REGEX.WAIT_FOR_RESULTS, waitForResults);
+    // ex: When I wait for "/the/endpoint" to resolve
+    When(REGEX.WAIT_FOR_ROUTE, waitForRoute);
 
     // use only in cases where Cypress functions can't be used
     When(REGEX.WAIT_SECONDS, (seconds) => {
