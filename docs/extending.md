@@ -3,5 +3,14 @@ id: extending
 title: Extending
 sidebar_label: Extending
 ---
+### Custom Phrases
+It is possible to create your own phrases which trigger cypress commands. In order to create a custom phrase, add something like the following to your `./support/step_definitions/mains.js` file:
 
-We expose some of the base functions so that you can extend PickleJS's magic into your app
+```
+Given(
+    'Some phrase with a {string}, another {string}, and an {int}',
+    (string1, string2, int1) => {
+      // your cypress commands here
+    },
+);
+```
