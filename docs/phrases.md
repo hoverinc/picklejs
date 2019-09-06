@@ -108,18 +108,10 @@ Ex:
 * `I scroll to the bottom the page`
 * `I scroll to the top of the page`
 
-
-### Waiting For AJAX to Finish
-`I wait for results to load`
-
-Waits for an AJAX request to finish.
-
-This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
-
 ### Waiting For a Request to Resolve
-`I wait for "hoverApi/v1/users_orgs" to resolve`
+`I wait for "some/routeName" to resolve`
 
-Wait for a request defined in the routes file to resolve.
+Wait for a request defined in the routes file to resolve. Replace `"some/routeName"` with a value from the key-value pairs in the router object.
 
 ### Waiting For an Amount of Time
 `I wait for 3 seconds`
