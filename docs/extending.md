@@ -4,7 +4,7 @@ title: Extending
 sidebar_label: Extending
 ---
 ### Custom Phrases
-It is possible to create your own phrases which trigger cypress commands. In order to create a custom phrase, add something like the following to your `./support/step_definitions/mains.js` file:
+It is possible to create your own phrases which trigger cypress commands. In order to create a custom phrase, add something like the following to your `/support/step_definitions/your-component/feature.js` file:
 
 ```
 Given(
