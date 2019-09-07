@@ -8,9 +8,16 @@ It is possible to create your own phrases which trigger cypress commands. In ord
 
 ```
 Given(
-    'Some phrase with a {string}, another {string}, and an {int}',
+    'I make a phrase with a {string}, another {string}, and a {int}',
     (string1, string2, int1) => {
       // your cypress commands here
     },
 );
+```
+
+Now, in your tests, this new phrase can be used just like the built in phrases:
+
+```
+When I make a phrase with a "Cool String", another "Nice String", and a 100
+Then I should see a "Button"
 ```
