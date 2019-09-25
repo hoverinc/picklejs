@@ -13,6 +13,7 @@ const {
     nElements,
     textOnEl,
     elExists,
+    elHasValue,
     elDoesNotExist,
     elBackground,
     elBorder,
@@ -81,10 +82,10 @@ module.exports = () => {
     Then(REGEX.EL_DOES_NOT_EXIST, elDoesNotExist);
 
     // ex: "Username" should be "toli"
-    Then(REGEX.EL_CONTAINS_TEXT, elExists);
+    Then(REGEX.EL_CONTAINS_TEXT, elHasValue);
 
     // ex: "Username's" value should be "toli"
-    Then(REGEX.EL_VALUE, elExists);
+    Then(REGEX.EL_VALUE, elHasValue);
 
     // ex: I should see a "red" background on the "Button"
     Then(REGEX.EL_BACKBGROUND, elBackground)
