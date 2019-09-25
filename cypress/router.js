@@ -1,22 +1,19 @@
+const parseRoute = require('../common/parseRoute');
+
 const processRoutes = (routes) => {
     // implement our fixtures
-    Object.entries(routes).forEach(([path, endpoint]) => {
-        let method = 'GET';
-        const methods = ['POST', 'GET', 'DELETE', 'PUT'];
+    Object.entries(routes).forEach(([route, endpoint]) => {
+        const {
+            method,
+            path
+        } = parseRoute(route);
 
-        methods.forEach(m => {
-            if (path.includes(`${m} `)) {
-                path = path.replace(`${m} `, '');
-                method = m;
-            }
-        });
-
-        cy.route(method, path, `fixture:${endpoint}.json`)
+        cy.route(method, path, `fixture:${endpoint}`)
             .as(endpoint);
     });
 }
 
-module.exports =(routes, { stubAll } = {}) => {
+module.exports = (routes, { stubAll } = {}) => {
     beforeEach(() => {
         cy.server();
         
