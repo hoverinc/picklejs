@@ -3,7 +3,7 @@
   "version": "0.99.0",
   "main": "buildLib",
   "dependencies": {
-    "cypress-cucumber-preprocessor": "^1.2.2",
+    "cypress-cucumber-preprocessor": "^1.16.1",
     "cypress-image-snapshot": "~1.0.2",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
