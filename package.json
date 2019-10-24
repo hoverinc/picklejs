@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "cd website && yarn start",
-    "buildSite": "cd website && yarn build",
+    "buildSite": "cd website && yarn && yarn build",
     "prepush": "yarn build && yarn buildSite",
     "cypress:open": "yarn --cwd website cypress open website",
     "cypress:run": "yarn --cwd website cypress run --record --key <YOUR_KEY>",
