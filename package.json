@@ -26,6 +26,6 @@
     "babel-watch": "^2.0.7",
     "chai": "^4.2.0",
     "jest": "^23.5.0",
-    "jest-cucumber": "^1.0.11"
+    "jest-cucumber": "^2.0.11"
   }
 }
