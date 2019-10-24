@@ -128,7 +128,7 @@ const takeSnapshot = () => {
 
 }
 
-const takeSnapshotNamed = (name) => {
+const takeNamedSnapshot = (name) => {
     cy.matchImageSnapshot(name, snapshotOptions);
 }
 

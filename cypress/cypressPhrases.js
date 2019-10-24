@@ -8,6 +8,7 @@ const {
     dragAbove,
     takeSnapshot,
     takeElSnapshot,
+    takeNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,
@@ -59,6 +60,8 @@ module.exports = () => {
 
     When(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
 
+    When(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
+
     // ex: I should be on the "Login Screen"
     Then(REGEX.ON_PAGE, onPage);
 
@@ -71,7 +74,7 @@ module.exports = () => {
     // ex: I should see "Press Me" on the "Button" inside the "Modal"
     Then(REGEX.TEXT_ON_EL, textOnEl);
 
-    // putting after because the one before exclusively works 
+    // putting after because the one before exclusively works
     // for text and doesn't have a verb before it
     // ex: I should see "Press Me Button" on the "Button" inside the "Modal"
     Then(REGEX.EL_EXISTS, elExists);
