@@ -18,6 +18,7 @@ module.exports = {
     DRAG_ABOVE: r(`I drag${elInEl} above${elInEl}`),
     TAKE_SNAPSHOT:  r(`I take a snapshot`),
     TAKE_EL_SNAPSHOT: r(`I take a snapshot of${elInEl}`),
+    TAKE_SNAPSHOT_NAMED: r(`I take a snapshot named ${string}`),
     ON_PAGE: r(`I should be on${page}`),
     REDIRECTED_TO: r(`I should be redirected to${page}`),
     N_ELEMENTS: r(`I should see ${int}${elInEl}`),

@@ -48,7 +48,7 @@ For example:
 * `I should see 4 "Buttons" inside the "Modal" containing "Press Me"`
 
 ## Whens
-### Navigating/Opening a Page 
+### Navigating/Opening a Page
 `I open [the] <Screen>`
 
 Navigates to a Screen's URL
@@ -117,16 +117,21 @@ Waits for an AJAX request to finish.
 This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
 
 ### Taking a Snapshot
-`I take a snapshot named "{string}"`
+`I take a snapshot"`
 
 Takes a snapshot of the current screen and compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
+
+### Taking a Named Snapshot
+`I take a snapshot named "{string}"`
+
+Takes a snapshot of the current screen and names it the string you give, then compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
 
 ### Taking an Element Snapshot
 `I take a snapshot of the "Header"`
 Takes a snapshot of just the element, saves it with the Element's name, and compares to a previous snapshot.
 
 ## Thens
-### Redirect 
+### Redirect
 `I should be redirected to the <Screen>`
 
 Checks if I am on the Screen's url

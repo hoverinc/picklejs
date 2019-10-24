@@ -4,7 +4,7 @@
   "main": "buildLib",
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
-    "cypress-image-snapshot": "~1.0.2",
+    "cypress-image-snapshot": "3.1.1",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
     "wdio-mocha-framework": "^0.6.4",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "cd website && yarn start",
-    "buildSite": "cd website && yarn build",
+    "buildSite": "cd website && yarn && yarn build",
     "prepush": "yarn build && yarn buildSite",
     "cypress:open": "yarn --cwd website cypress open website",
     "cypress:run": "yarn --cwd website cypress run --record --key <YOUR_KEY>",

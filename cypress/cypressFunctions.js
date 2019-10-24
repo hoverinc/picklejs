@@ -17,7 +17,7 @@ const getNormalized = (elements, { text, singular } = {}) => {
             return el.eq(firstOrdinal - 1);
         }
     }
-    
+
     return el;
 }
 
@@ -49,7 +49,7 @@ const click = (el, parent, text) => (
 const type = (text, input, parent) => {
     const randomVariableRegex = /<rand:(\w+)>/;
     const randomVariable = text.match(randomVariableRegex);
-    
+
     if (randomVariable) {
         const randomNumber = Math.round(Math.random() * 10000).toString();
         text = text.replace(randomVariableRegex, randomNumber);
@@ -68,16 +68,16 @@ const type = (text, input, parent) => {
 
 const replace = (input, parent, contains, text) => {
     getNormalized([parent, input], { text: contains })
-        .clear()  
+        .clear()
         .type(text);
 }
 
 const open = screen => {
     const url = SCREENS[screen];
-    
+
     if(!url) throw Error(`Screen ${screen} has no specified URL`);
-    
-    cy.visit(url); 
+
+    cy.visit(url);
 }
 
 const wait = (secs) => {
@@ -95,7 +95,7 @@ const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => 
 
     let el2X = 0;
     let el2Y = 0;
-    
+
     getNormalized([el2Parent, el2], { text: el2Contains }).then($el => {
       const { x, y } = $el[0].getBoundingClientRect();
       el2X = x;
@@ -111,21 +111,29 @@ const dragAbove = (el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => 
             force: true
         };
 
-        $el 
+        $el
             .trigger('mousemove', newPosOpts)
             .trigger('mouseup', newPosOpts);
     });
 }
 
+// threshold for entire image
+const snapshotOptions = {
+    failureThreshold: 0.10,
+    failureThresholdType: 'percent',
+}
+
 const takeSnapshot = () => {
-    cy.matchImageSnapshot();
+    cy.matchImageSnapshot(null, snapshotOptions);
+
+}
+
+const takeNamedSnapshot = (name) => {
+    cy.matchImageSnapshot(name, snapshotOptions);
 }
 
 const takeElSnapshot =  (el, parent) => {
-    getNormalized([parent, el]).matchImageSnapshot(el, {
-        threshold: 1000,
-        thresholdType: 'pixel'
-    });
+    getNormalized([parent, el]).matchImageSnapshot(el, snapshotOptions);
 }
 
 const onPage = screen => {
