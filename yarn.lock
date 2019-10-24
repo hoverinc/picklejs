@@ -1375,7 +1375,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@6.x.x, babel-runtime@^6.11.6, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0, babel-runtime@^6.9.0:
+babel-runtime@6.x.x, babel-runtime@^6.11.6, babel-runtime@^6.22.0, babel-runtime@^6.26.0, babel-runtime@^6.9.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1540,10 +1540,6 @@ browser-resolve@^1.11.0, browser-resolve@^1.11.3, browser-resolve@^1.7.0:
   resolved "https://registry.yarnpkg.com/browser-resolve/-/browser-resolve-1.11.3.tgz#9b7cbb3d0f510e4cb86bdbd796124d28b5890af6"
   dependencies:
     resolve "1.1.7"
-
-browser-stdout@1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/browser-stdout/-/browser-stdout-1.3.1.tgz#baa559ee14ced73452229bad7326467c61fabd60"
 
 browserify-aes@^1.0.0, browserify-aes@^1.0.4:
   version "1.2.0"
@@ -1925,10 +1921,6 @@ combined-stream@1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2.15.1:
-  version "2.15.1"
-  resolved "http://registry.npmjs.org/commander/-/commander-2.15.1.tgz#df46e867d0fc2aec66a34662b406a9ccafff5b0f"
-
 commander@^2.11.0, commander@^2.9.0:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
@@ -2285,7 +2277,7 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-detect-libc@^1.0.2, detect-libc@^1.0.3:
+detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
 
@@ -2301,7 +2293,7 @@ detective@^5.0.2:
     defined "^1.0.0"
     minimist "^1.1.1"
 
-diff@3.5.0, diff@^3.0.0, diff@^3.2.0:
+diff@^3.0.0, diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
 
@@ -2435,7 +2427,7 @@ es6-symbol@^3.1.1, es6-symbol@~3.1.1:
     d "1"
     es5-ext "~0.10.14"
 
-escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
+escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
 
@@ -2623,12 +2615,6 @@ fb-watchman@^2.0.0:
   resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.0.tgz#54e9abf7dfa2f26cd9b1636c588c1afc05de5d58"
   dependencies:
     bser "^2.0.0"
-
-fibers@^3.0.0:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/fibers/-/fibers-3.1.1.tgz#0238902ca938347bd779523692fbeefdf4f688ab"
-  dependencies:
-    detect-libc "^1.0.3"
 
 figures@2.0.0:
   version "2.0.0"
@@ -2834,7 +2820,7 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@7.1.2, glob@^7.0.0, glob@^7.0.5, glob@^7.1.0, glob@^7.1.2:
+glob@^7.0.0, glob@^7.0.5, glob@^7.1.0, glob@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
   dependencies:
@@ -2896,10 +2882,6 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.4, graceful-fs@^4.1.6:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-growl@1.10.5:
-  version "1.10.5"
-  resolved "https://registry.yarnpkg.com/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
-
 growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
@@ -2938,10 +2920,6 @@ has-flag@^1.0.0:
 has-flag@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-3.0.0.tgz#b5d454dc2199ae225699f3467e5a07f3b955bafd"
-
-has-symbols@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.0.tgz#ba1a8f1af2a0fc39650f5c850367704122063b44"
 
 has-unicode@^2.0.0:
   version "2.0.1"
@@ -2993,10 +2971,6 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
-
-he@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
 hex-rgb@^3.0.0:
   version "3.0.0"
@@ -4368,7 +4342,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
 
-minimatch@3.0.4, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -4411,22 +4385,6 @@ mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
-
-mocha@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/mocha/-/mocha-5.2.0.tgz#6d8ae508f59167f940f2b5b3c4a612ae50c90ae6"
-  dependencies:
-    browser-stdout "1.3.1"
-    commander "2.15.1"
-    debug "3.1.0"
-    diff "3.5.0"
-    escape-string-regexp "1.0.5"
-    glob "7.1.2"
-    growl "1.10.5"
-    he "1.1.1"
-    minimatch "3.0.4"
-    mkdirp "0.5.1"
-    supports-color "5.4.0"
 
 module-deps@^6.0.0:
   version "6.1.0"
@@ -4620,7 +4578,7 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-keys@^1.0.11, object-keys@^1.0.12:
+object-keys@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.12.tgz#09c53855377575310cca62f55bb334abff7b3ed2"
 
@@ -4629,15 +4587,6 @@ object-visit@^1.0.0:
   resolved "https://registry.yarnpkg.com/object-visit/-/object-visit-1.0.1.tgz#f79c4493af0c5377b59fe39d395e41042dd045bb"
   dependencies:
     isobject "^3.0.0"
-
-object.assign@^4.0.3:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.1.0.tgz#968bf1100d7956bb3ca086f006f846b3bc4008da"
-  dependencies:
-    define-properties "^1.1.2"
-    function-bind "^1.1.1"
-    has-symbols "^1.0.0"
-    object-keys "^1.0.11"
 
 object.getownpropertydescriptors@^2.0.3:
   version "2.0.3"
@@ -5700,12 +5649,6 @@ subarg@^1.0.0:
   dependencies:
     minimist "^1.1.0"
 
-supports-color@5.4.0, supports-color@^5.3.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
-  dependencies:
-    has-flag "^3.0.0"
-
 supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
@@ -5715,6 +5658,12 @@ supports-color@^3.1.2:
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:
     has-flag "^1.0.0"
+
+supports-color@^5.3.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.4.0.tgz#1c6b337402c2137605efe19f10fec390f6faab54"
+  dependencies:
+    has-flag "^3.0.0"
 
 symbol-tree@^3.2.2:
   version "3.2.2"
@@ -6072,14 +6021,6 @@ watchify@3.11.0:
     through2 "^2.0.0"
     xtend "^4.0.0"
 
-wdio-mocha-framework@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/wdio-mocha-framework/-/wdio-mocha-framework-0.6.4.tgz#291b05b5f8735716023e1228e461f66ff2e7e1c9"
-  dependencies:
-    babel-runtime "^6.23.0"
-    mocha "^5.2.0"
-    wdio-sync "0.7.3"
-
 wdio-screenshot@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/wdio-screenshot/-/wdio-screenshot-0.6.0.tgz#fb326b1a6b9751a13c2cea511fd7062e05b73a4d"
@@ -6093,14 +6034,6 @@ wdio-screenshot@^0.6.0:
     lodash "^4.16.1"
     uuid "^3.0.0"
     which "^1.2.10"
-
-wdio-sync@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/wdio-sync/-/wdio-sync-0.7.3.tgz#858c7439c18c0dbdcd2e25e29db8a0ea2f34bc04"
-  dependencies:
-    babel-runtime "^6.26.0"
-    fibers "^3.0.0"
-    object.assign "^4.0.3"
 
 wdio-visual-regression-service@^0.9.0:
   version "0.9.0"
