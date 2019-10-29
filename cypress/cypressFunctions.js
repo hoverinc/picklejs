@@ -84,8 +84,8 @@ const wait = (secs) => {
     cy.wait(secs * 1000);
 }
 
-const waitForResults = () => {
-    cy.wait(1000);
+const waitForRoute = (routeName) => {
+    cy.wait(`@${routeName}`);
 }
 
 // Experimental, not nailed down yet
@@ -178,7 +178,7 @@ module.exports = {
     replace,
     open,
     wait,
-    waitForResults,
+    waitForRoute,
     dragAbove,
     takeSnapshot,
     takeElSnapshot,
