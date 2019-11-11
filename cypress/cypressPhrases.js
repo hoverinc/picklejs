@@ -15,6 +15,7 @@ const {
     textOnEl,
     elExists,
     elHasValue,
+    elNotVisible,
     elDoesNotExist,
     elBackground,
     elBorder,
