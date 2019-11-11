@@ -60,7 +60,7 @@ module.exports = () => {
 
     When(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
 
-    When(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
+    When(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot);
 
     // ex: I should be on the "Login Screen"
     Then(REGEX.ON_PAGE, onPage);
@@ -82,6 +82,12 @@ module.exports = () => {
     // ex:  I should not see the "Buttons" in the "Modal"
     //      I should not see "Buttons" on the "Page"
     //      I should not see the "Button"
+    Then(REGEX.EL_NOT_VISIBLE, elNotVisible);
+
+
+    // ex:  The "Buttons" in the "Modal" should not exist
+    //      The "Buttons" on the "Page" should not exist
+    //      The "Button" should not exist
     Then(REGEX.EL_DOES_NOT_EXIST, elDoesNotExist);
 
     // ex: "Username" should be "toli"
@@ -91,8 +97,8 @@ module.exports = () => {
     Then(REGEX.EL_VALUE, elHasValue);
 
     // ex: I should see a "red" background on the "Button"
-    Then(REGEX.EL_BACKBGROUND, elBackground)
+    Then(REGEX.EL_BACKBGROUND, elBackground);
 
     // ex: I should see a "red" border on the "Button"
-    Then(REGEX.EL_BORDER, elBorder)
+    Then(REGEX.EL_BORDER, elBorder);
 }
