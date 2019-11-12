@@ -157,10 +157,15 @@ const elHasValue = (el, parent, contains, text) => (
 
 const textOnEl = (text, el, parent) => elExists(el, parent, { text });
 
+const elNotVisible = (el, parent, text) => {
+    getNormalized([parent, el], { text, singular: true })
+        .should('not.be.visible');
+};
+
 const elDoesNotExist =  (el, parent, text) => {
     getNormalized([parent, el], { text, singular: true })
         .should('have.length', 0);
-}
+};
 
 const elBackground = (background, el, parent) => {
     getNormalized([parent, el]).should('have.css', 'background-color', hex2rgbCSS(background))
@@ -188,6 +193,7 @@ module.exports = {
     textOnEl,
     elExists,
     elHasValue,
+    elNotVisible,
     elDoesNotExist,
     elBackground,
     elBorder,

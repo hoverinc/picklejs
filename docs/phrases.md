@@ -165,15 +165,25 @@ Ex:
 * `I should see 3 "Buttons" in "Modal"`
 * `I should see 3 "Buttons"`
 
-#### Element Does not Exist
+#### Element is not Visible
 `I should not see <Element> [on the] <Element>`
 
-An element should not be present
+An element should not be visible
 
 Ex:
 * `I should not see the "Buttons" in the "Modal"`
 * `I should not see "Buttons" on the "Page"`
 * `I should not see the "Button"`
+
+#### Element Does not Exist
+`[The] <Element> should not exist [on the] <Element>`
+
+An element should not be exist in the DOM
+
+Ex:
+* `The "Buttons" in the "Modal" should not exist`
+* `The "Buttons" on the "Page" should not exist`
+* `The "Button" should not exist`
 
 ### Element Containing Text
 #### Contains Text
