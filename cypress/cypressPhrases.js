@@ -57,10 +57,11 @@ module.exports = () => {
     When(REGEX.DRAG_ABOVE, dragAbove);
 
     When(REGEX.TAKE_SNAPSHOT, takeSnapshot);
-
     When(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
-
     When(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
+    Then(REGEX.TAKE_SNAPSHOT, takeSnapshot);
+    Then(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
+    Then(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
 
     // ex: I should be on the "Login Screen"
     Then(REGEX.ON_PAGE, onPage);
