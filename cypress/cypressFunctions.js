@@ -1,10 +1,13 @@
-const {
+const variables = require('../common/variables');
+let {
     SCREENS,
     STATE,
     setState,
-} = require('../common/variables');
+} = variables;
 
-const { getSelector, hex2rgbCSS } = require('../common/functions');
+const functions = require('../common/functions');
+let { getSelector, hex2rgbCSS } = functions;
+
 
 const getNormalized = (elements, { text, singular } = {}) => {
     const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
@@ -123,16 +126,15 @@ const snapshotOptions = {
     failureThresholdType: 'percent',
 }
 
-const takeSnapshot = () => {
+const compareSnapshot = () => {
     cy.matchImageSnapshot(null, snapshotOptions);
-
 }
 
-const takeNamedSnapshot = (name) => {
+const compareNamedSnapshot = (name) => {
     cy.matchImageSnapshot(name, snapshotOptions);
 }
 
-const takeElSnapshot =  (el, parent) => {
+const compareElSnapshot =  (el, parent) => {
     getNormalized([parent, el]).matchImageSnapshot(el, snapshotOptions);
 }
 
@@ -180,9 +182,9 @@ module.exports = {
     wait,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
-    takeNamedSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
+    compareNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,

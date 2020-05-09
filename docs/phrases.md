@@ -116,18 +116,18 @@ Waits for an AJAX request to finish.
 
 This is currently not working as it should so I replaced with a `wait(1000)`. Feel free to submit PRs to fix
 
-### Taking a Snapshot
-`I take a snapshot"`
+### Comparing a Snapshot
+`I compare a snapshot`
 
-Takes a snapshot of the current screen and compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
+Takes & Compares a snapshot of the current screen and compares to a previous snapshot.
 
 ### Taking a Named Snapshot
-`I take a snapshot named "{string}"`
+`I compare a snapshot named "{string}"`
 
-Takes a snapshot of the current screen and names it the string you give, then compares to a previous snapshot. I guess this is a `Then` as well as `When` functionality wise.
+Takes a snapshot of the current screen and names it the string you give, then compares to a previous snapshot.
 
 ### Taking an Element Snapshot
-`I take a snapshot of the "Header"`
+`I compare a snapshot of the "Header"`
 Takes a snapshot of just the element, saves it with the Element's name, and compares to a previous snapshot.
 
 ## Thens

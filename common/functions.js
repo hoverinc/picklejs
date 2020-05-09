@@ -1,7 +1,9 @@
 const hex2rgb = require('hex-rgb');
-const { wordsToNumbers } = require('words-to-numbers');
+let wordsToNumbers = require('words-to-numbers');
+wordsToNumbers = wordsToNumbers.default;
 const pluralize = require('pluralize');
-const { ELEMENT_SELECTORS } = require('../common/variables');
+let variables = require('../common/variables');
+let { ELEMENT_SELECTORS } = variables;
 
 // COMMON FUNCTIONS
 

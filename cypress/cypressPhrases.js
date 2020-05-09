@@ -6,9 +6,9 @@ const {
     open,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
-    takeNamedSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
+    compareNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,
@@ -56,12 +56,9 @@ module.exports = () => {
     // This is experimental and not part of the official API
     When(REGEX.DRAG_ABOVE, dragAbove);
 
-    When(REGEX.TAKE_SNAPSHOT, takeSnapshot);
-    When(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
-    When(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
-    Then(REGEX.TAKE_SNAPSHOT, takeSnapshot);
-    Then(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
-    Then(REGEX.TAKE_SNAPSHOT_NAMED, takeNamedSnapshot)
+    Then(REGEX.COMPARE_SNAPSHOT, compareSnapshot);
+    Then(REGEX.COMPARE_EL_SNAPSHOT, compareElSnapshot);
+    Then(REGEX.COMPARE_SNAPSHOT_NAMED, compareNamedSnapshot)
 
     // ex: I should be on the "Login Screen"
     Then(REGEX.ON_PAGE, onPage);

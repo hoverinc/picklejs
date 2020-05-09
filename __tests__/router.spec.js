@@ -1,4 +1,4 @@
-import { processRoutes } from "../router";
+import { processRoutes } from "../cypress/router";
 
 describe('Router', () => {
     describe('buildMap', () => {

@@ -1,13 +1,17 @@
-import * as functions from '../functions';
+import * as functions from '../common/functions';
+import * as cypressFunctions from '../cypress/cypressFunctions';
 import { ELEMENT_SELECTORS, STATE, setScreens } from '../common/variables';
+
 
 let {
     hex2rgbCSS,
     buildClassSelector,
     parseNumberEls,
-    getNormalized,
     getSelector,
+} = functions;
 
+let {
+    getNormalized,
     scroll,
     click,
     type,
@@ -15,8 +19,9 @@ let {
     open,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
+    compareNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,
@@ -25,7 +30,7 @@ let {
     elDoesNotExist,
     elBackground,
     elBorder,
-} = functions;
+} = cypressFunctions;
 
 jest.mock('../common/variables');
 
@@ -387,27 +392,38 @@ describe('functions', () => {
 
 	});
 
-    test('takeSnapshot', () => {
-        takeSnapshot('Test');
+    test('compareSnapshot', () => {
+        compareSnapshot();
 
         expect(matchImageSnapshot).toBeCalledWith(
-            'Test', {
-                threshold: 1000,
-                thresholdType: 'pixel'
+            null, {
+              failureThreshold: 0.1,
+              failureThresholdType: "percent"
             }
         );
 	});
 
-    test('takeElSnapshot', () => {
-        takeElSnapshot('Input');
+    test('compareElSnapshot', () => {
+        compareElSnapshot('Input');
 
         expect(matchImageSnapshot).toBeCalledWith(
             'Input', {
-                threshold: 1000,
-                thresholdType: 'pixel'
+              failureThreshold: 0.1,
+              failureThresholdType: "percent"
             }
         );
 	});
+
+  test('compareNamedSnapshot', () => {
+      compareNamedSnapshot('Test Page');
+
+      expect(matchImageSnapshot).toBeCalledWith(
+          'Test Page', {
+              failureThreshold: 0.1,
+              failureThresholdType: "percent"
+          }
+      );
+});
 
     test('onPage', () => {
         onPage('Home');
