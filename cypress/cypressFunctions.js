@@ -182,6 +182,7 @@ module.exports = {
     dragAbove,
     takeSnapshot,
     takeElSnapshot,
+    takeNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,
