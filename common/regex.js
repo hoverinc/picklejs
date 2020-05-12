@@ -12,6 +12,7 @@ module.exports = {
     SCROLL_TO: r(`I scroll to${elInEl}`),
     CLICK: r(`I click${elInEl}`),
     TYPE: r(`I type ${string}${elInEl}`),
+    // TODO: FAKE: for faker methods is implemented directly in cypressPhrases on the fly
     REPLACE: r(`I replace the contents${elInEl} with ${string}`),
     OPEN: r(`I open${page}`),
     WAIT_FOR_RESULTS: r(`I wait for results to load`),

@@ -59,7 +59,7 @@ const type = (text, input, parent) => {
         setState(randomVariable[1], randomNumber);
     }
 
-    const stateVariableRegex = /<var:(\w+) >/;
+    const stateVariableRegex = /<var:(\w+)>/;
     const stateVariable = text.match(stateVariableRegex);
 
     if (stateVariable) {
@@ -68,6 +68,12 @@ const type = (text, input, parent) => {
 
     getNormalized([parent, input]).type(text);
 }
+
+const fake = (asName, fakeValue, input, parent) => {
+    setState(asName, fakeValue);
+    getNormalized([parent, input]).type(fakeValue);
+}
+
 
 const replace = (input, parent, contains, text) => {
     getNormalized([parent, input], { text: contains })
@@ -177,6 +183,7 @@ module.exports = {
     scroll,
     click,
     type,
+    fake,
     replace,
     open,
     wait,
