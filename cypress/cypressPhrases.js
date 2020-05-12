@@ -249,7 +249,13 @@ module.exports = () => {
         let categoryKeyName = changeCase.capitalCase(categoryKey);
 
         When(r(`I type a fake ${categoryKeyName} as ${string}${elInEl}`), function(asName, input, parent){
-          fake(asName, faker[category][categoryKey](), input, parent)
+          let value = undefined;
+          if(categoryKey == "password") {
+            value = faker[category][categoryKey](15, true, null, "qQ1!");
+          } else {
+            value = faker[category][categoryKey]();
+          }
+          fake(asName, value, input, parent)
         });
       });
     });
