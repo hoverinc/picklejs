@@ -1,9 +1,9 @@
 {
     "presets": [
-        "stage-0"
+        "@babel/preset-env"
     ],
     "plugins": [
-        "transform-es2015-modules-umd",
+        "@babel/plugin-transform-modules-umd",
         "add-module-exports"
     ]
 }
