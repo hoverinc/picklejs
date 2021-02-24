@@ -4,7 +4,7 @@
   "main": "buildLib",
   "dependencies": {
     "cypress-cucumber-preprocessor": "^1.2.2",
-    "cypress-image-snapshot": "3.1.1",
+    "cypress-image-snapshot": "4.0.1",
     "hex-rgb": "^3.0.0",
     "pluralize": "^7.0.0",
     "wdio-visual-regression-service": "^0.9.0",
