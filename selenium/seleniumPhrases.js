@@ -8,8 +8,8 @@ const {
     wait,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
     onPage,
     redirectedTo,
     nElements,
@@ -67,9 +67,9 @@ addPhrase(REGEX.WAIT_SECONDS, (seconds) => {
 // This is experimental and not part of the official API
 addPhrase(REGEX.DRAG_ABOVE, dragAbove);
 
-addPhrase(REGEX.TAKE_SNAPSHOT, takeSnapshot);
+addPhrase(REGEX.COMPARE_SNAPSHOT, compareSnapshot);
 
-addPhrase(REGEX.TAKE_EL_SNAPSHOT, takeElSnapshot);
+addPhrase(REGEX.COMPARE_EL_SNAPSHOT, compareElSnapshot);
 
 // ex: I should be on the "Login Screen"
 addPhrase(REGEX.ON_PAGE, onPage);

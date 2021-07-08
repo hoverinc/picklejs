@@ -12,7 +12,7 @@ Feature: Home
 
     # # Scenario: I should see a presentation
     # #     Then I wait 2 seconds
-    # #     Then I take a snapshot of "Presentation"
+    # #     Then I compare a snapshot of "Presentation"
 
     Scenario: I should be able to search for a doc
         When I type "recommended" into the "Search Input" in the "Header"

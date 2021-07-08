@@ -5,7 +5,7 @@ import {
     int,
     elInEl,
     page,
-} from '../regexBuilder';
+} from '../common/regexBuilder';
 
 describe('RegexBuilder', () => {
     describe('r', () => {

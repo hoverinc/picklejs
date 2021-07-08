@@ -208,18 +208,18 @@ waitForResults() =>
 cy.timeout(1000)
 ```
 
-### takeSnapshot
-Takes s a snapshot of the entire page and matches it against al old snapshot taken. Save is under the name specified
+### compareSnapshot
+Saves and compares a snapshot of the entire page to the previously (if one) taken snapshot. Saved under the name specified
 
 ```
-takeSnapshot('Test Page')
+compareSnapshot('Test Page')
 ```
 
-### takeElSnapshot
+### compareElSnapshot
 Takes a snapshot of an element
 
 ```
-takeElSnapshot('Input');
+compareElSnapshot('Input');
 ```
 
 ### onPage

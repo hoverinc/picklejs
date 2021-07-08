@@ -1,24 +1,26 @@
+const regexBuilder = require('./regexBuilder');
 const {
     r,
     string,
     int,
     elInEl,
     page,
-} = require('./regexBuilder');
+} = regexBuilder;
 
 module.exports = {
     SCROLL: r(`I scroll to the (top|bottom) of the page`),
     SCROLL_TO: r(`I scroll to${elInEl}`),
     CLICK: r(`I click${elInEl}`),
     TYPE: r(`I type ${string}${elInEl}`),
+    // TODO: FAKE: for faker methods is implemented directly in cypressPhrases on the fly
     REPLACE: r(`I replace the contents${elInEl} with ${string}`),
     OPEN: r(`I open${page}`),
     WAIT_FOR_RESULTS: r(`I wait for results to load`),
     WAIT_SECONDS: r(`I wait ${int} seconds`),
     DRAG_ABOVE: r(`I drag${elInEl} above${elInEl}`),
-    TAKE_SNAPSHOT:  r(`I take a snapshot`),
-    TAKE_EL_SNAPSHOT: r(`I take a snapshot of${elInEl}`),
-    TAKE_SNAPSHOT_NAMED: r(`I take a snapshot named ${string}`),
+    COMPARE_SNAPSHOT:  r(`I compare a snapshot`),
+    COMPARE_EL_SNAPSHOT: r(`I compare a snapshot of${elInEl}`),
+    COMPARE_SNAPSHOT_NAMED: r(`I compare a snapshot named ${string}`),
     ON_PAGE: r(`I should be on${page}`),
     REDIRECTED_TO: r(`I should be redirected to${page}`),
     N_ELEMENTS: r(`I should see ${int}${elInEl}`),

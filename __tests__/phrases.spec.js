@@ -1,4 +1,4 @@
-import { REGEX } from '../phrases';
+import * as REGEX from '../common/regex';
 
 describe('REGEX', () => {
     describe('SCROLL', () => {
@@ -217,19 +217,28 @@ describe('REGEX', () => {
         });
     });
 
-    describe('TAKE_SNAPSHOT', () => {
-        it('I take a snapshot named "Home Page"', () => {
-            const m = 'I take a snapshot named "Home Page"'
-                .match(REGEX.TAKE_SNAPSHOT);
+    describe('COMPARE_SNAPSHOT', () => {
+        it('I compare a snapshot', () => {
+            const m = 'I compare a snapshot'
+                .match(REGEX.COMPARE_SNAPSHOT);
+            
+            expect(m[1]).toBe(undefined);
+        });
+    });
+
+    describe('COMPARE_SNAPSHOT_NAMED', () => {
+        it('I compare a snapshot named "Home Page"', () => {
+            const m = 'I compare a snapshot named "Home Page"'
+                .match(REGEX.COMPARE_SNAPSHOT_NAMED);
             
             expect(m[1]).toBe('Home Page');
         });
     });
 
-    describe('TAKE_EL_SNAPSHOT', () => {
-        it('I take a snapshot of the "Modal"', () => {
-            const m = 'I take a snapshot of the "Modal"'
-                .match(REGEX.TAKE_EL_SNAPSHOT);
+    describe('COMPARE_EL_SNAPSHOT', () => {
+        it('I compare a snapshot of the "Modal"', () => {
+            const m = 'I compare a snapshot of the "Modal"'
+                .match(REGEX.COMPARE_EL_SNAPSHOT);
             
             expect(m[1]).toBe('Modal');
         });
