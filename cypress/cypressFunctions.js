@@ -1,10 +1,13 @@
-const {
+const variables = require('../common/variables');
+let {
     SCREENS,
     STATE,
     setState,
-} = require('../common/variables');
+} = variables;
 
-const { getSelector, hex2rgbCSS } = require('../common/functions');
+const functions = require('../common/functions');
+let { getSelector, hex2rgbCSS } = functions;
+
 
 const getNormalized = (elements, { text, singular } = {}) => {
     const { className, firstOrdinal } = getSelector(elements, { text, singular, showOrdinals: true })
@@ -56,7 +59,7 @@ const type = (text, input, parent) => {
         setState(randomVariable[1], randomNumber);
     }
 
-    const stateVariableRegex = /<var:(\w+) >/;
+    const stateVariableRegex = /<var:(\w+)>/;
     const stateVariable = text.match(stateVariableRegex);
 
     if (stateVariable) {
@@ -65,6 +68,12 @@ const type = (text, input, parent) => {
 
     getNormalized([parent, input]).type(text);
 }
+
+const fake = (asName, fakeValue, input, parent) => {
+    setState(asName, fakeValue);
+    getNormalized([parent, input]).type(fakeValue);
+}
+
 
 const replace = (input, parent, contains, text) => {
     getNormalized([parent, input], { text: contains })
@@ -123,16 +132,15 @@ const snapshotOptions = {
     failureThresholdType: 'percent',
 }
 
-const takeSnapshot = () => {
+const compareSnapshot = () => {
     cy.matchImageSnapshot(null, snapshotOptions);
-
 }
 
-const takeNamedSnapshot = (name) => {
+const compareNamedSnapshot = (name) => {
     cy.matchImageSnapshot(name, snapshotOptions);
 }
 
-const takeElSnapshot =  (el, parent) => {
+const compareElSnapshot =  (el, parent) => {
     getNormalized([parent, el]).matchImageSnapshot(el, snapshotOptions);
 }
 
@@ -175,13 +183,15 @@ module.exports = {
     scroll,
     click,
     type,
+    fake,
     replace,
     open,
     wait,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
+    compareNamedSnapshot,
     onPage,
     redirectedTo,
     nElements,

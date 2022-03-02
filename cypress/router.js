@@ -16,7 +16,7 @@ const processRoutes = (routes) => {
     });
 }
 
-module.exports =(routes, { stubAll } = {}) => {
+module.exports = (routes, { stubAll } = {}) => {
     beforeEach(() => {
         cy.server();
         
@@ -26,3 +26,5 @@ module.exports =(routes, { stubAll } = {}) => {
         processRoutes(routes);
     });
 }
+
+module.exports.processRoutes = processRoutes

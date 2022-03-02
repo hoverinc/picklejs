@@ -88,12 +88,12 @@ const waitForResults = (browser) => {
 const dragAbove = (browser, el1, el1Parent, el1Contains, el2, el2Parent, el2Contains) => {
 }
 
-const takeSnapshot = (browser) => {
+const compareSnapshot = (browser) => {
     const [{ isWithinMisMatchTolerance }] = browser.checkViewport();
     assert.isTrue(isWithinMisMatchTolerance);
 }
 
-const takeElSnapshot =  (browser, el, parent) => {
+const compareElSnapshot =  (browser, el, parent) => {
     const [{ isWithinMisMatchTolerance }] = browser.checkElement(getNormalized(browser, [parent, el]));
     assert.isTrue(isWithinMisMatchTolerance);
 }
@@ -149,8 +149,8 @@ module.exports = {
     wait,
     waitForResults,
     dragAbove,
-    takeSnapshot,
-    takeElSnapshot,
+    compareSnapshot,
+    compareElSnapshot,
     onPage,
     redirectedTo,
     nElements,
